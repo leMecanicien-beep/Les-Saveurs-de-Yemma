@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nom": "Menu Yemma Complet",
+    "description": "Le menu signature de la maison",
+    "plats_ids": [3, 1, 13],
+    "prix_total": 19.00,
+    "disponible": true
+  },
+  {
+    "id": 2,
+    "nom": "Menu Grillade",
+    "description": "Pour les amateurs de viande",
+    "plats_ids": [4, 10, 14],
+    "prix_total": 18.00,
+    "disponible": true
+  },
+  {
+    "id": 3,
+    "nom": "Menu Découverte",
+    "description": "Idéal pour découvrir la cuisine algérienne",
+    "plats_ids": [6, 2, 15],
+    "prix_total": 16.00,
+    "disponible": true
+  }
+]
