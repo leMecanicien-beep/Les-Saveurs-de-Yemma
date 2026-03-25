@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "nom": "Couscous Yemma",
+    "description": "Semoule, poulet, légumes, sauce Yemma",
+    "prix": 12.50,
+    "categorie": "Traditionnel",
+    "allergenes": ["gluten", "céleri"],
+    "disponible": true
+  },
+  {
+    "id": 2,
+    "nom": "Tajine olives",
+    "description": "Poulet, olives vertes, pommes de terre, épices orientales",
+    "prix": 11.00,
+    "categorie": "Traditionnel",
+    "allergenes": [],
+    "disponible": true
+  },
+  {
+    "id": 3,
+    "nom": "Chorba",
+    "description": "Soupe traditionnelle aux tomates, viande, pois chiches, vermicelles",
+    "prix": 6.50,
+    "categorie": "Entrée",
+    "allergenes": ["gluten", "céleri"],
+    "disponible": true
+  },
+  {
+    "id": 4,
+    "nom": "Brique thon",
+    "description": "Feuille de brick maison, thon, oeuf, persil",
+    "prix": 4.00,
+    "categorie": "Entrée",
+    "allergenes": ["gluten", "oeuf", "poisson"],
+    "disponible": true
+  },
+  {
+    "id": 5,
+    "nom": "Brique tomate oeuf",
+    "description": "Feuille de brick maison, tomates fraîches, oeuf vapeur",
+    "prix": 3.50,
+    "categorie": "Entrée",
+    "allergenes": ["gluten", "oeuf"],
+    "disponible": true
+  },
+  {
+    "id": 6,
+    "nom": "Brique viande hachée",
+    "description": "Feuille de brick maison, viande hachée, épinards, épices",
+    "prix": 4.50,
+    "categorie": "Entrée",
+    "allergenes": ["gluten"],
+    "disponible": true
+  },
+  {
+    "id": 7,
+    "nom": "Samosa poulet",
+    "description": "Pâte croustillante, garniture poulet",
+    "prix": 5.00,
+    "categorie": "Entrée",
+    "allergenes": ["gluten"],
+    "disponible": true
+  },
+  {
+    "id": 8,
+    "nom": "Samosa boeuf",
+    "description": "Pâte croustillante, garniture boeuf",
+    "prix": 5.00,
+    "categorie": "Entrée",
+    "allergenes": ["gluten"],
+    "disponible": true
+  },
+  {
+    "id": 9,
+    "nom": "Samosa légumes",
+    "description": "Pâte croustillante, garniture légumes",
+    "prix": 4.50,
+    "categorie": "Entrée",
+    "allergenes": ["gluten"],
+    "disponible": true
+  },
+  {
+    "id": 10,
+    "nom": "Grillades boeuf",
+    "description": "Brochettes de boeuf marinées, salade ou frites",
+    "prix": 13.00,
+    "categorie": "Grillade",
+    "allergenes": [],
+    "disponible": true
+  },
+  {
+    "id": 11,
+    "nom": "Grillades veau",
+    "description": "Escalope de veau grillée, marinade maison",
+    "prix": 14.00,
+    "categorie": "Grillade",
+    "allergenes": [],
+    "disponible": true
+  },
+  {
+    "id": 12,
+    "nom": "Grillades agneau",
+    "description": "Côtelettes d'agneau grillées, herbes et épices orientales",
+    "prix": 15.00,
+    "categorie": "Grillade",
+    "allergenes": [],
+    "disponible": true
+  },
+  {
+    "id": 13,
+    "nom": "Makroud",
+    "description": "Gâteau semoule farci aux dattes, miel",
+    "prix": 3.00,
+    "categorie": "Dessert",
+    "allergenes": ["gluten", "fruits à coque"],
+    "disponible": true
+  },
+  {
+    "id": 14,
+    "nom": "Baklava",
+    "description": "Pâte feuilletée, pistaches, miel",
+    "prix": 3.50,
+    "categorie": "Dessert",
+    "allergenes": ["gluten", "fruits à coque"],
+    "disponible": true
+  },
+  {
+    "id": 15,
+    "nom": "Café algérien",
+    "description": "Café noir serré à la cardamome",
+    "prix": 2.00,
+    "categorie": "Boisson",
+    "allergenes": [],
+    "disponible": true
+  }
+]
