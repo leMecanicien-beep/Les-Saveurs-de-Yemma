@@ -28,11 +28,11 @@ require_once __DIR__ . '/lib/users.php';
                         <?php endif; ?>
                     </li>
                     <li class="carte">
-                        <a href="#">CARTE</a>
+                        <a href="vues/plat.html">CARTE</a>
                         <ul class="deroulant">
-                            <li><a href="#">FORMULES</a></li>
-                            <li><a href="#">TRADITION DU JOUR</a></li>
-                            <li><a href="#">OFFRES</a></li>
+                            <li><a href="vues/plat.html">FORMULES</a></li>
+                            <li><a href="vues/tradition.html">TRADITION DU JOUR</a></li>
+                            <li><a href="vues/offre.html">OFFRES</a></li>
                         </ul>
                     </li>
                     <li><a href="vues/panier.php">COMMANDE</a></li>
@@ -67,14 +67,22 @@ require_once __DIR__ . '/lib/users.php';
                     <p>Bienvenue <strong><?php echo $_SESSION['user']['prenom']; ?></strong> !</p>
                 <?php endif; ?>
                 <p>
-                    Aux saveurs de Yemma, nous ne servons pas simplement des plats, 
-                    nous partageons une tradition. Ici, chaque recette raconte une histoire, 
-                    celle des cuisines algériennes où la maman règne avec amour et savoir-faire.
+                    Aux saveurs de Yemma, nous ne servons pas simplement des plats,
+                    nous partageons une tradition. Ici, chaque recette raconte une histoire,
+                    celle des cuisines algériennes où la maman — la véritable maîtresse des saveurs
+                    — règne avec amour et savoir-faire.
                 </p>
                 <p>
-                    Nos plats sont préparés comme à la maison, avec des ingrédients frais, 
-                    des épices soigneusement choisies et ce petit secret que seule "Yemma" maîtrise : 
-                    la générosité.
+                    Nos plats sont préparés comme à la maison, avec des ingrédients frais,
+                    des épices soigneusement choisies et harmonisées et ce petit secret que seule "Yemma" maîtrise :
+                    la générosité. Couscous parfumé, tajines, chorba réconfortante…
+                    chaque bouchée vous fera voyager autour d'une table familiale en Algérie.
+                </p>
+                <p>
+                    En franchissant notre porte, vous ne venez pas seulement manger.
+                    Vous venez retrouver la chaleur d'un foyer, le parfum d'un plat qui
+                    mijote depuis des heures et le plaisir simple d'un repas partagé.
+                    Venez goûter l'Algérie comme si vous étiez à la maison.
                 </p>
             </div>
         </section>
