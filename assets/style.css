@@ -180,22 +180,39 @@ main h2 {
 /* ===================== */
 
 .presentation {
-    display: flex;
-    gap: 40px;
-    align-items: center;
+    background-color: white;
+    border-radius: 40px;
+    width: 95%;
+    margin: 40px auto;
+    padding: 50px;
 }
 
+
+.image {
+    display: inline-block;
+    width: 75%;
+    vertical-align: top;
+}
+
+
 .image img {
-    width: 400px;
-    border-radius: 12px;
-    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.texte {
+    display: inline-block;
+    width: 44%;
+    vertical-align: top;
+    margin-left: 4%;
+    padding-top: 30px;
 }
 
 .texte p {
     margin-bottom: 20px;
-    line-height: 1.7;
-    color: #444;
-    font-size: 15px;
+    line-height: 1.8;
+    text-align: center;
+    font-size: 17px;
 }
 
 .tahia {
@@ -360,4 +377,97 @@ main h2 {
     width: 20px;
     margin-left: 8px;
     vertical-align: middle;
+}
+
+/* ===================== */
+/* PAGE BANNER           */
+/* ===================== */
+
+.page-banner {
+    text-align: center;
+    padding: 30px 20px 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f0e6ff;
+}
+
+.page-banner h2 {
+    font-size: 28px;
+    color: #7b2cbf;
+    margin-bottom: 8px;
+}
+
+.page-banner p {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+/* ===================== */
+/* PRIX SUR LES CARTES   */
+/* ===================== */
+
+.aliment {
+    display: flex;
+    flex-direction: column;
+}
+
+.prix {
+    display: inline-block;
+    margin-top: auto;
+    padding-top: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #7b2cbf;
+}
+
+.allergenes {
+    font-size: 11px !important;
+    color: #aaa !important;
+    font-style: italic;
+    margin-bottom: 4px !important;
+}
+
+.filtres button.actif {
+    background-color: #7b2cbf;
+    color: white;
+}
+
+/* ===================== */
+/* BADGE JOUR (TRADITION)*/
+/* ===================== */
+
+.badge-jour {
+    display: inline-block;
+    background-color: #f0e6ff;
+    color: #7b2cbf;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    width: fit-content;
+}
+
+/* ===================== */
+/* BADGE OFFRE           */
+/* ===================== */
+
+.badge-offre {
+    display: inline-block;
+    background-color: #7b2cbf;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    width: fit-content;
+}
+
+.offre-card {
+    border-left: 4px solid #7b2cbf;
 }
