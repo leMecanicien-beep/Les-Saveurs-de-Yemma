@@ -292,21 +292,4 @@ body main h2 {
   font-family: "Great Vibes";
 }
 
-.utilisateurs {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
 
-.utilisateur {
-  background-color: white;
-  padding: 20px;
-  width: 250px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
-.utilisateur h3 {
-  font-family: "Georgia", "Times New Roman", serif;
-}
