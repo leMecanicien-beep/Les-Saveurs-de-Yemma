@@ -1,0 +1,43 @@
+/* ===================== */
+/* PAGE ACCUEIL          */
+/* ===================== */
+
+.presentation {
+  background-color: white;
+  border-radius: 40px;
+  width: 95%;
+  margin: 40px auto;
+  padding: 30px;
+}
+
+.image {
+  display: inline-block;
+  width: 45%;
+  vertical-align: top;
+}
+
+.image img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.texte {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  margin-left: 4%;
+  padding-top: 30px;
+}
+
+.texte p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.tahia {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+}
