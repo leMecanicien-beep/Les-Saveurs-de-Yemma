@@ -1,27 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background: #f4f0fa;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Titre */
-h2 {
-    margin-bottom: 30px;
-    color: #333;
-}
-
 /* Carte livraison */
 .livraison {
-    width: 400px;
+    width: 450px;
     background: white;
     padding: 25px;
     border-radius: 12px;
@@ -29,31 +8,24 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    margin: 30px auto;
 }
 
-/* Texte */
+.livraison h3 {
+    color: #b98acb;
+    margin-bottom: 5px;
+}
+
 .livraison p {
     font-size: 15px;
     color: #444;
 }
 
-/* Boutons */
-.btn {
+.livraison-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     margin-top: 10px;
-    padding: 12px;
-    text-align: center;
-    background-color: #7b2cbf;
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background-color: #5a189a;
 }
 
 .done {
@@ -66,9 +38,44 @@ h2 {
 }
 .abandon:hover { background-color: #c0392b; }
 
-.livraison-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 10px;
+
+/* ===================== */
+/* HISTORIQUE LIVRAISONS */
+/* ===================== */
+
+.historique {
+  margin-top: 30px;
+}
+
+.table-livraison {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-livraison thead {
+  background: #b98acb;
+  color: white;
+}
+
+.table-livraison th,
+.table-livraison td {
+  padding: 10px;
+  text-align: center;
+}
+
+.table-livraison tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+.statut-livree {
+  color: green;
+  font-weight: bold;
+}
+
+.statut-abandonnee {
+  color: #e74c3c;
+  font-weight: bold;
 }
