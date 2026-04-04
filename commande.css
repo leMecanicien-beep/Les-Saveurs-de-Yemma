@@ -5,21 +5,20 @@
     font-family: Arial, sans-serif;
 }
 
-
+/* Fond léger violet */
 body {
     background-color: #f4f0fa;
     padding: 50px;
 }
 
-
+/* Titre */
 h2 {
     text-align: center;
     margin-bottom: 40px;
     color: #333;
-    font-family: "Georgia", "Times New Roman", serif;
 }
 
-
+/* Carte commande */
 .commande {
     width: 800px;
     margin: 0 auto 25px auto;
@@ -33,13 +32,13 @@ h2 {
     transition: 0.3s;
 }
 
-
+/* Effet au survol */
 .commande:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 25px rgba(0,0,0,0.12);
 }
 
-
+/* Texte commande */
 .commande h3 {
     margin-bottom: 8px;
     color: #111;
@@ -49,39 +48,102 @@ h2 {
     color: #555;
 }
 
-
-.status {
-    padding: 8px 18px;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 14px;
-    color: white;
+/* Filtres */
+.filtres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 28px;
 }
-
-
-.preparation {
-    background-color: #f39c12;
-    padding: 8px 18px;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 14px;
-    color: white;
+.filtre-btn {
+    padding: 7px 16px;
+    border-radius: 20px;
+    background: white;
+    border: 2px solid #ddd;
+    text-decoration: none;
+    color: #555;
+    font-size: 0.88em;
+    transition: 0.2s;
 }
+.filtre-btn:hover { border-color: #7b2cbf; color: #7b2cbf; }
+.filtre-btn.actif  { background: #7b2cbf; color: white; border-color: #7b2cbf; }
 
-.pret {
-    background-color: #7b2cbf;
-    padding: 8px 18px;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 14px;
-    color: white;
+/* Commande layout */
+.commande {
+    width: 820px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.08);
+    transition: 0.3s;
 }
+.commande:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.12); }
+.commande h3    { margin-bottom: 6px; color: #111; }
+.commande p     { color: #555; font-size: 0.92em; margin: 3px 0; }
+.commande-info  { flex: 1; }
+.commande-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
 
-.fini {
-    background-color: #27ae60;
-    padding: 8px 18px;
-    border-radius: 30px;
+/* Badge statut */
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 0.85em;
     color: white;
+    white-space: nowrap;
 }
+.attente     { background: #95a5a6; }
+.preparation { background: #f39c12; }
+.prete       { background: #2980b9; }
+.en-livraison{ background: #8e44ad; }
+.fini        { background: #27ae60; }
+.abandonnee  { background: #e74c3c; }
+
+/* Lien détail */
+.btn-detail {
+    padding: 7px 14px;
+    background: #f4f0fa;
+    color: #7b2cbf;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.88em;
+    font-weight: bold;
+    border: 1px solid #d4b8f0;
+    transition: 0.2s;
+}
+.btn-detail:hover { background: #7b2cbf; color: white; }
+
+/* Retour */
+.retour {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: #7b2cbf;
+    text-decoration: none;
+    font-size: 0.92em;
+}
+.retour:hover { text-decoration: underline; }
+
+/* Bloc détail */
+.detail-bloc {
+    width: 820px;
+    margin: 0 auto 20px auto;
+    background: white;
+    border-radius: 12px;
+    padding: 22px 28px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+.detail-bloc h3 { color: #7b2cbf; margin-top: 0; margin-bottom: 12px; }
+
+/* Table plats */
+.table-plats { width: 100%; border-collapse: collapse; }
+.table-plats th { background: #f4f0fa; padding: 8px 12px; text-align: left; font-size: 0.9em; }
+.table-plats td { padding: 8px 12px; border-bottom: 1px solid #f0e6ff; font-size: 0.92em; }
+
+/* Actions form */
+.actions-form { display: flex; flex-direction: column; gap: 12px; }
