@@ -1,4 +1,4 @@
-/*ce bloc nous sert à avoir une mise en page stable pour pas qu'un imprévu change tout, en gros tout est mis à zéro et la largeur est définie par convention au cas où le style plante*/
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -11,6 +11,9 @@ body {
 }
 
 
+/* ===================== */
+/* HEADER / NAV          */
+/* ===================== */
 
 header {
   background-color: #b98acb;
@@ -21,9 +24,8 @@ header {
   width: 100%;
 }
 
-
 .enseigne {
-  display: inline-block; /*ranger onglets principaux pour aligner comme un tableau*/
+  display: inline-block;
   width: 20%;
   vertical-align: middle;
 }
@@ -49,7 +51,7 @@ nav ul li {
   display: inline-block;
   font-family: "Georgia", "Times New Roman", serif;
   margin: 0 25px;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 nav ul li a {
@@ -59,7 +61,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color:gold;
+  color: gold;
 }
 
 .barre {
@@ -69,7 +71,6 @@ nav ul li a:hover {
   vertical-align: middle;
 }
 
-
 .barre input {
   padding: 6px 10px;
   border-radius: 20px;
@@ -78,45 +79,13 @@ nav ul li a:hover {
 }
 
 
-
-.presentation {
-  background-color: white;
-  border-radius: 40px;
-  width: 95%;
-  margin: 40px auto; /*centrer le texte*/
-  padding: 30px;
-}
-
-.image {
-  display: inline-block;
-  width: 45%;
-  vertical-align: top;
-}
-
-.image img {
-  width: 100%; /*image peut s'adapter à la largeur restante*/
-  border-radius: 8px;
-}
-
-
-.texte {
-  display: inline-block;
-  width: 50%;
-  vertical-align: top;
-  margin-left: 4%;
-  padding-top: 30px;
-}
-
-.texte p {
-  margin-bottom: 15px;
-  line-height: 1.6;
-  text-align: center;
-}
+/* ===================== */
+/* MENUS DÉROULANTS      */
+/* ===================== */
 
 .carte {
   position: relative;
 }
-
 
 .deroulant {
   display: none;
@@ -136,12 +105,9 @@ nav ul li a:hover {
   display: block;
 }
 
-
 .carte:hover .deroulant {
   display: block;
 }
-
-/*on refait exactement les mêmes lignes de code pour le menu déroulant de A PROPOS*/
 
 .propos {
   position: relative;
@@ -165,131 +131,90 @@ nav ul li a:hover {
   display: block;
 }
 
-
 .propos:hover .deroulant2 {
   display: block;
 }
 
-.profil {
-  background-color: white;
-  width: 85%;
-  margin: 50px auto;
+
+/* ===================== */
+/* PAGES AVEC CARTE (.card) */
+/* ===================== */
+
+.card {
+  margin: auto;
+  background: white;
   padding: 40px;
-}
-
-.profil h2 {
-  margin-bottom: 30px;
-  font-family: "Georgia", "Times New Roman", serif;
-}
-
-
-.profil2 {
+  border-radius: 10px;
+  width: 380px;
   text-align: center;
-}
-
-
-.carteprofil {
-  display: inline-block;
-  width: 28%;
-  vertical-align: top;
-  margin: 0 2%;
-  padding: 20px;
   border: 2px solid #b98acb;
-  border-radius: 8px;
-  text-align: left;
-  background-color: #f9f9f9;
 }
 
-.carteprofil h3 {
+.card h2 {
+  margin-bottom: 20px;
+  color: #111;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
   margin-bottom: 15px;
-  font-family: "Georgia", "Times New Roman", serif;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
 }
 
-.carteprofil ul {
-  padding-left: 20px;
+input:focus {
+  border: 1px solid #b98acb;
 }
 
-.info {
-  margin-top: 15px;
-  text-align: right;
-}
-
-.edit {
-  display: inline-flex;
-  align-items: center;
-  font-family: "Georgia", "Times New Roman", serif;
-  text-decoration: none;
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
   background-color: #b98acb;
   color: white;
-  padding: 8px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-}
-
-.edit:hover {
-  background-color: gold;
-}
-
-.crayon {
-  width: 25px;
-  height: 25px;
-}
-
-.tahia {
-  position:fixed;
-  bottom: 0;
-  right: 0;
-  width: 120px;
-}
-
-.etoile {
-  width: 20px;
-  vertical-align: middle;
-  margin-right: 8px;
-}
-
-.recherche {
-  text-align: center;
-  margin: 20px;
-}
-
-.recherche input {
-  padding: 8px;
-  width: 250px;
-}
-
-
-.filtres {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.filtres button {
-  padding: 8px 12px;
-  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #9a6aad;
+}
+
+.btn-secondary {
+  background-color: #c9a0dc;
+}
+
+.btn-secondary:hover {
+  background-color: #b98acb;
+}
+
+.buttons {
+  margin-top: 20px;
 }
 
 
-.plats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
+/* ===================== */
+/* PAGE BANNER           */
+/* ===================== */
+
+.page-banner {
+  text-align: center;
+  padding: 30px 20px 10px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e8d5f5;
 }
 
-.aliment {
-  background-color: white;
-  padding: 15px;
-  border: 1px solid #ddd;
+.page-banner h2 {
+  font-size: 28px;
+  color: #b98acb;
+  margin-bottom: 8px;
 }
 
-.aliment h3 {
-  margin-top: 0;
+.page-banner p {
+  color: #666;
+  font-size: 15px;
 }
-
-body main h2 {
-  font-family: "Great Vibes";
-}
-
-
