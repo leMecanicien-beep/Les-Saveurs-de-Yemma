@@ -1,0 +1,116 @@
+/* ===================== */
+/* PAGE PROFIL           */
+/* ===================== */
+
+.profil {
+  background-color: white;
+  width: 85%;
+  margin: 50px auto;
+  padding: 40px;
+}
+
+.profil h2 {
+  margin-bottom: 30px;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+.profil2 {
+  text-align: center;
+}
+
+.carteprofil {
+  display: inline-block;
+  width: 28%;
+  vertical-align: top;
+  margin: 0 2%;
+  padding: 20px;
+  border: 2px solid #b98acb;
+  border-radius: 8px;
+  text-align: left;
+  background-color: #f9f9f9;
+}
+
+.carteprofil h3 {
+  margin-bottom: 15px;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+.carteprofil ul {
+  padding-left: 20px;
+}
+
+.info {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.edit {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Georgia", "Times New Roman", serif;
+  text-decoration: none;
+  background-color: #b98acb;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.edit:hover {
+  background-color: gold;
+}
+
+.crayon {
+  width: 25px;
+  height: 25px;
+}
+
+.etoile {
+  width: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.tahia {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+}
+
+
+/* ===================== */
+/* PAGE PROFIL CLIENT    */
+/* ===================== */
+
+.notif-succes {
+  text-align: center;
+  background: #f0e6ff;
+  color: #b98acb;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.commande-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0e6ff;
+}
+
+.lien-sm {
+  font-size: .85em;
+  color: #b98acb;
+  text-decoration: none;
+}
+
+.lien-noter {
+  font-size: .85em;
+  color: #f39c12;
+  text-decoration: none;
+}
+
+.note-etoiles {
+  font-size: .85em;
+  color: #b98acb;
+}
