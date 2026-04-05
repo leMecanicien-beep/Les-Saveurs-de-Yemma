@@ -40,11 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body style="min-height:100vh; display:flex; align-items:center; justify-content:center;">
+<body class="body-centered">
 <div class="card">
     <h2>Connexion</h2>
     <?php if ($erreur): ?>
-        <p style="color:red;"><?php echo $erreur; ?></p>
+        <p class="msg-erreur"><?php echo $erreur; ?></p>
     <?php endif; ?>
     <form action="" method="post">
         <input type="email" name="email" placeholder="Adresse e-mail" required>
