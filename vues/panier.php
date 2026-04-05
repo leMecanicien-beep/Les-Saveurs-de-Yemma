@@ -93,29 +93,29 @@ $total = round($total, 2);
         <?php if (empty($_SESSION['panier'])): ?>
             <p>Votre panier est vide. <a href="plat.php">Voir la carte</a></p>
         <?php else: ?>
-            <div style="width:65%;margin:0 auto;">
+            <div class="panier-wrapper">
 
                 <?php foreach ($_SESSION['panier'] as $id => $quantite): ?>
                     <?php foreach ($plats as $plat): ?>
                         <?php if ($plat['id'] === $id): ?>
-                        <div style="display:flex;justify-content:space-between;align-items:center;padding:15px;background:white;border:1px solid #ddd;border-radius:8px;margin-bottom:10px;">
+                        <div class="panier-item">
                             <div>
                                 <strong><?php echo $plat['nom']; ?></strong>
-                                <p style="margin:4px 0;color:#666;"><?php echo $plat['prix']; ?>€ l'unité</p>
+                                <p class="prix-unite"><?php echo $plat['prix']; ?>€ l'unité</p>
                             </div>
-                            <div style="display:flex;align-items:center;gap:8px;">
-                                <a href="?diminuer=<?php echo $id; ?>" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:#ddd;border-radius:50%;text-decoration:none;font-size:18px;font-weight:bold;color:#333;">−</a>
-                                <span style="font-size:16px;font-weight:bold;min-width:20px;text-align:center;"><?php echo $quantite; ?></span>
-                                <a href="?ajouter=<?php echo $id; ?>" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:#7b2cbf;border-radius:50%;text-decoration:none;font-size:18px;font-weight:bold;color:white;">+</a>
-                                <strong style="min-width:60px;text-align:right;"><?php echo round($plat['prix'] * $quantite, 2); ?>€</strong>
-                                <a href="?supprimer=<?php echo $id; ?>" style="color:red;font-size:18px;text-decoration:none;">✕</a>
+                            <div class="panier-item-actions">
+                                <a href="?diminuer=<?php echo $id; ?>" class="btn-diminuer">−</a>
+                                <span class="panier-quantite"><?php echo $quantite; ?></span>
+                                <a href="?ajouter=<?php echo $id; ?>" class="btn-augmenter">+</a>
+                                <strong class="panier-item-prix"><?php echo round($plat['prix'] * $quantite, 2); ?>€</strong>
+                                <a href="?supprimer=<?php echo $id; ?>" class="btn-supprimer-item">✕</a>
                             </div>
                         </div>
                         <?php endif; ?>
                     <?php endforeach; ?>
                 <?php endforeach; ?>
 
-                <div style="text-align:right;padding:20px;font-size:20px;">
+                <div class="panier-total">
                     <strong>Total : <?php echo $total; ?>€</strong>
                 </div>
 
@@ -123,40 +123,26 @@ $total = round($total, 2);
                     <input type="hidden" name="total" value="<?php echo $total; ?>">
                     <input type="hidden" name="panier" value="<?php echo htmlspecialchars(json_encode($_SESSION['panier'])); ?>">
 
-                    <div style="margin-bottom:15px;">
+                    <div class="form-group">
                         <label><strong>Type de commande :</strong></label><br>
-                        <select name="type" id="type_commande" style="padding:8px;margin-top:8px;border-radius:6px;border:1px solid #ccc;" onchange="toggleHeureSouhaitee()">
+                        <select name="type" class="select-commande">
                             <option value="livraison">Livraison à domicile</option>
                             <option value="emporter">À emporter</option>
                             <option value="sur_place">Sur place</option>
                         </select>
                     </div>
 
-                    <div style="margin-bottom:15px;">
-                        <label><strong>Quand souhaitez-vous être servi ?</strong></label><br>
-                        <div style="display:flex;gap:12px;margin-top:8px;align-items:center;">
-                            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
-                                <input type="radio" name="quand" value="maintenant" checked onchange="toggleHeureSouhaitee()">
-                                Dès que possible
-                            </label>
-                            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
-                                <input type="radio" name="quand" value="plus_tard" onchange="toggleHeureSouhaitee()">
-                                Programmer pour plus tard
-                            </label>
-                        </div>
-                    </div>
-
-                    <div id="heure_souhaitee_bloc" style="margin-bottom:15px;display:none;">
-                        <label><strong>Date et heure souhaitées :</strong></label><br>
+                    <div class="form-group">
+                        <label><strong>Date et heure souhaitées (optionnel) :</strong></label><br>
                         <input type="datetime-local" name="heure_souhaitee"
                                min="<?php echo date('Y-m-d\TH:i', strtotime('+30 minutes')); ?>"
-                               style="padding:8px;margin-top:8px;border-radius:6px;border:1px solid #ccc;">
-                        <p style="font-size:0.85em;color:#888;margin-top:4px;">
-                            La commande ne sera pas préparée avant cette heure.
+                               class="input-datetime">
+                        <p class="hint-text">
+                            Laisser vide pour une préparation dès que possible.
                         </p>
                     </div>
 
-                    <button type="submit" style="width:100%;padding:15px;background:#7b2cbf;color:white;border:none;border-radius:8px;font-size:16px;cursor:pointer;">
+                    <button type="submit" class="btn-valider-panier">
                         Valider et payer
                     </button>
                 </form>
@@ -164,11 +150,6 @@ $total = round($total, 2);
         <?php endif; ?>
     </section>
 </main>
-<script>
-function toggleHeureSouhaitee() {
-    var plusTard = document.querySelector('input[name="quand"][value="plus_tard"]').checked;
-    document.getElementById('heure_souhaitee_bloc').style.display = plusTard ? 'block' : 'none';
-}
 </script>
 </body>
 </html>
