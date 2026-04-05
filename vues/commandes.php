@@ -103,7 +103,7 @@ usort($commandes_affichees, fn($a, $b) => strcmp($b['date'], $a['date']));
             </p>
             <p><strong>Date commande :</strong> <?php echo $commande['date']; ?></p>
             <?php if ($commande['heure_souhaitee']): ?>
-            <p><strong>Livraison souhaitée :</strong> <span style="color:#e67e22;font-weight:bold;"><?php echo $commande['heure_souhaitee']; ?></span></p>
+            <p><strong>Livraison souhaitée :</strong> <span class="heure-souhaitee-value"><?php echo $commande['heure_souhaitee']; ?></span></p>
             <?php endif; ?>
             <p><strong>Montant :</strong> <?php echo $commande['montant']; ?>€</p>
             <p><strong>Plats :</strong>
