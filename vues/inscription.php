@@ -35,9 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Inscription - Les Saveurs de Yemma</title>
-    <link rel="stylesheet" href="../assets/choix_connexion_inscription.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body>
+<body style="min-height:100vh; display:flex; align-items:center; justify-content:center;">
 <div class="card">
     <h2>Inscription</h2>
     <?php if ($erreur): ?>
