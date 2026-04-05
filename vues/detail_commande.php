@@ -85,7 +85,7 @@ $classe_statut = [
         <p><strong>Date de commande :</strong> <?php echo $commande['date']; ?></p>
         <?php if ($commande['heure_souhaitee']): ?>
         <p><strong>Livraison / récupération souhaitée :</strong>
-            <span style="color:#e67e22;font-weight:bold;"><?php echo $commande['heure_souhaitee']; ?></span>
+            <span class="heure-souhaitee-value"><?php echo $commande['heure_souhaitee']; ?></span>
         </p>
         <?php else: ?>
         <p><strong>Préparation :</strong> Immédiate</p>
@@ -138,7 +138,7 @@ $classe_statut = [
             </tbody>
         </table>
         <?php if (!empty($commande['menus_ids'])): ?>
-        <p style="margin-top:8px;font-size:0.9em;color:#666;">
+        <p class="info-menus">
             <em>Menus inclus :
             <?php
             foreach ($commande['menus_ids'] as $menu_id) {
@@ -154,29 +154,29 @@ $classe_statut = [
 
     <div class="detail-bloc">
         <h3>Actions (disponibles en Phase 3)</h3>
-        <p style="color:#888;font-style:italic;margin-bottom:12px;">
+        <p class="actions-disabled-note">
             La modification du statut et l'attribution du livreur seront effectives en Phase 3.
         </p>
 
         <div class="actions-form">
             <div>
                 <label><strong>Changer le statut :</strong></label><br>
-                <select disabled style="padding:8px;border-radius:6px;border:1px solid #ccc;margin-top:6px;opacity:0.6;">
+                <select disabled class="select-disabled">
                     <?php foreach ($label_statut as $val => $lib): ?>
                     <option value="<?php echo $val; ?>" <?php echo $commande['statut'] === $val ? 'selected' : ''; ?>>
                         <?php echo $lib; ?>
                     </option>
                     <?php endforeach; ?>
                 </select>
-                <button disabled style="margin-left:8px;padding:8px 16px;background:#7b2cbf;color:white;border:none;border-radius:6px;opacity:0.5;cursor:not-allowed;">
+                <button disabled class="btn-disabled-statut">
                     Valider
                 </button>
             </div>
 
             <?php if ($commande['type'] === 'livraison'): ?>
-            <div style="margin-top:16px;">
+            <div class="livreur-section">
                 <label><strong>Attribuer un livreur :</strong></label><br>
-                <select disabled style="padding:8px;border-radius:6px;border:1px solid #ccc;margin-top:6px;opacity:0.6;">
+                <select disabled class="select-disabled">
                     <option value="">-- Choisir un livreur --</option>
                     <?php foreach ($livreurs as $livreur): ?>
                     <option value="<?php echo $livreur['id']; ?>"
@@ -186,7 +186,7 @@ $classe_statut = [
                     </option>
                     <?php endforeach; ?>
                 </select>
-                <button disabled style="margin-left:8px;padding:8px 16px;background:#27ae60;color:white;border:none;border-radius:6px;opacity:0.5;cursor:not-allowed;">
+                <button disabled class="btn-disabled-livreur">
                     Attribuer
                 </button>
             </div>
