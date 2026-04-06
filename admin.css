@@ -1,6 +1,4 @@
-/* ===================== */
-/* PAGE ADMIN            */
-/* ===================== */
+
 
 .utilisateurs {
   display: flex;
@@ -73,10 +71,6 @@
   text-decoration: none;
 }
 
-
-/* ===================== */
-/* PAGE PROFIL ADMIN     */
-/* ===================== */
 
 .info-card {
   background: white;
