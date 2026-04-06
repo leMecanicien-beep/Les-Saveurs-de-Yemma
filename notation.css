@@ -27,12 +27,12 @@ h2 {
     text-align: center;
 }
 
-/* Texte */
+
 .notation-box p {
     margin-bottom: 20px;
 }
 
-/* Etoiles */
+
 .stars {
     display: flex;
     justify-content: center;
@@ -40,12 +40,12 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* On cache les boutons radio */
+
 .stars input {
     display: none;
 }
 
-/* Etoiles */
+
 .stars label {
     font-size: 40px;
     color: #ccc;
@@ -53,18 +53,18 @@ h2 {
     transition: 0.3s;
 }
 
-/* Hover */
+
 .stars label:hover,
 .stars label:hover ~ label {
     color: gold;
 }
 
-/* Etoile sélectionnée */
+
 .stars input:checked ~ label {
     color: gold;
 }
 
-/* Zone commentaire */
+
 textarea {
     width: 100%;
     height: 80px;
@@ -75,7 +75,7 @@ textarea {
     resize: none;
 }
 
-/* Bouton */
+
 button {
     width: 100%;
     padding: 12px;
