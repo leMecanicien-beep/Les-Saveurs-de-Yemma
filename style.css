@@ -1,4 +1,4 @@
-/* Reset */
+
 * {
   margin: 0;
   padding: 0;
@@ -11,9 +11,6 @@ body {
 }
 
 
-/* ===================== */
-/* HEADER / NAV          */
-/* ===================== */
 
 header {
   background-color: #b98acb;
@@ -79,10 +76,6 @@ nav ul li a:hover {
 }
 
 
-/* ===================== */
-/* MENUS DÉROULANTS      */
-/* ===================== */
-
 .carte {
   position: relative;
 }
@@ -135,10 +128,6 @@ nav ul li a:hover {
   display: block;
 }
 
-
-/* ===================== */
-/* PAGES AVEC CARTE (.card) */
-/* ===================== */
 
 .card {
   margin: auto;
@@ -197,10 +186,6 @@ input:focus {
 }
 
 
-/* ===================== */
-/* PAGE BANNER           */
-/* ===================== */
-
 .page-banner {
   text-align: center;
   padding: 30px 20px 10px;
@@ -220,10 +205,6 @@ input:focus {
 }
 
 
-/* ===================== */
-/* BODY / MAIN CENTRÉ    */
-/* ===================== */
-
 body.body-centered {
   min-height: 100vh;
   display: flex;
@@ -239,10 +220,6 @@ main.main-centered {
 }
 
 
-/* ===================== */
-/* MESSAGES STATUT       */
-/* ===================== */
-
 .msg-erreur {
   color: red;
 }
@@ -255,10 +232,6 @@ main.main-centered {
   color: red;
 }
 
-
-/* ===================== */
-/* PANIER                */
-/* ===================== */
 
 .panier-wrapper {
   width: 65%;
@@ -389,10 +362,6 @@ main.main-centered {
 }
 
 
-/* ===================== */
-/* COMMANDES / DÉTAIL    */
-/* ===================== */
-
 .heure-souhaitee-value {
   color: #e67e22;
   font-weight: bold;
@@ -444,10 +413,6 @@ main.main-centered {
   cursor: not-allowed;
 }
 
-
-/* ===================== */
-/* HORAIRES              */
-/* ===================== */
 
 .texte-full {
   width: 100%;
