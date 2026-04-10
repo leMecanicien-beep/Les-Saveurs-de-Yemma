@@ -41,88 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Notation - Les Saveurs de Yemma</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/style.css">
-    <style>
-        .notation-box {
-            max-width: 550px;
-            margin: 0 auto;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 35px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-        }
-
-        .question {
-            margin-bottom: 25px;
-        }
-
-        .question p {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .stars {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: flex-end;
-            gap: 4px;
-        }
-
-        .stars input {
-            display: none;
-        }
-
-        .stars label {
-            font-size: 30px;
-            color: #ccc;
-            cursor: pointer;
-            transition: color 0.2s;
-            width: auto;
-            padding: 0;
-            margin: 0;
-        }
-
-        .stars input:checked ~ label,
-        .stars label:hover,
-        .stars label:hover ~ label {
-            color: #7b2cbf;
-        }
-
-        textarea {
-            width: 100%;
-            height: 100px;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            resize: vertical;
-            font-size: 14px;
-            font-family: Arial, sans-serif;
-            margin-bottom: 20px;
-            outline: none;
-        }
-
-        textarea:focus {
-            border-color: #7b2cbf;
-        }
-
-        .notation-box button {
-            width: 100%;
-            padding: 12px;
-            background-color: #7b2cbf;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .notation-box button:hover {
-            background-color: #5a189a;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/notation.css">
 </head>
 <body>
 
@@ -137,15 +56,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <ul>
                 <li><a href="profil.php">PROFIL</a></li>
                 <li class="carte">
-                    <a href="plat.html">CARTE</a>
+                    <a href="plat.php">CARTE</a>
                     <ul class="deroulant">
-                        <li><a href="plat.html">FORMULES</a></li>
-                        <li><a href="tradition.html">TRADITION DU JOUR</a></li>
-                        <li><a href="offre.html">OFFRES</a></li>
+                        <li><a href="plat.php">FORMULES</a></li>
+                        <li><a href="tradition.php">TRADITION DU JOUR</a></li>
+                        <li><a href="offre.php">OFFRES</a></li>
                     </ul>
                 </li>
                 <li><a href="panier.php">COMMANDE</a></li>
-                <li><a href="#">HORAIRES</a></li>
+                <li><a href="horaires.php">HORAIRES</a></li>
                 <li><a href="deconnexion.php">DÉCONNEXION</a></li>
             </ul>
         </nav>
