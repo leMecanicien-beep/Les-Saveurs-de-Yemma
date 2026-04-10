@@ -84,7 +84,10 @@ if ($ma_commande) {
     </div>
 </header>
 <main>
-    <h2>Espace livreur — <?php echo $user['prenom'] . ' ' . $user['nom']; ?></h2>
+    <div class="page-banner">
+        <h2>Espace livreur</h2>
+        <p><?php echo $user['prenom'] . ' ' . $user['nom']; ?></p>
+    </div>
 
     <?php if ($ma_commande && $client): ?>
     <div class="livraison">
@@ -120,15 +123,15 @@ if ($ma_commande) {
     <?php endif; ?>
 
     <?php if (!empty($historique)): ?>
-    <div style="margin-top:30px;">
+    <div class="historique">
         <h3>Historique de mes livraisons</h3>
-        <table style="width:100%;border-collapse:collapse;background:white;border-radius:8px;overflow:hidden;">
-            <thead style="background:#7b2cbf;color:white;">
+        <table class="table-livraison">
+            <thead>
                 <tr>
-                    <th style="padding:10px;">Commande</th>
-                    <th style="padding:10px;">Date</th>
-                    <th style="padding:10px;">Client</th>
-                    <th style="padding:10px;">Statut</th>
+                    <th>Commande</th>
+                    <th>Date</th>
+                    <th>Client</th>
+                    <th>Statut</th>
                 </tr>
             </thead>
             <tbody>
@@ -137,15 +140,15 @@ if ($ma_commande) {
                 $c_client = null;
                 foreach ($users as $u) { if ($u['id'] === $h['user_id']) { $c_client = $u; break; } }
             ?>
-            <tr style="border-bottom:1px solid #eee;text-align:center;">
-                <td style="padding:10px;">#<?php echo $h['id']; ?></td>
-                <td style="padding:10px;"><?php echo $h['date']; ?></td>
-                <td style="padding:10px;"><?php echo $c_client ? $c_client['prenom'] . ' ' . $c_client['nom'] : 'Inconnu'; ?></td>
-                <td style="padding:10px;">
+            <tr>
+                <td>#<?php echo $h['id']; ?></td>
+                <td><?php echo $h['date']; ?></td>
+                <td><?php echo $c_client ? $c_client['prenom'] . ' ' . $c_client['nom'] : 'Inconnu'; ?></td>
+                <td>
                     <?php if ($h['statut'] === 'livree'): ?>
-                    <span style="color:green;font-weight:bold;">Livrée</span>
+                    <span class="statut-livree">Livrée</span>
                     <?php else: ?>
-                    <span style="color:#e74c3c;font-weight:bold;">Abandonnée</span>
+                    <span class="statut-abandonnee">Abandonnée</span>
                     <?php endif; ?>
                 </td>
             </tr>
