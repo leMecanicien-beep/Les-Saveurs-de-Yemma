@@ -22,9 +22,18 @@ function trouver_user_par_email($email) {
 }
 
 function connecter_user($email, $mot_de_passe) {
-    $user = trouver_user_par_email($email);
-    if ($user && $user['mot_de_passe'] === $mot_de_passe) {
-        return $user;
+    $users = lire_users();
+    foreach ($users as &$user) {
+        if ($user['email'] === $email && $user['mot_de_passe'] === $mot_de_passe) {
+            // Refuser les comptes bloqués
+            if ($user['bloque'] ?? false) {
+                return 'bloque';
+            }
+            // Mettre à jour la date de dernière connexion
+            $user['date_derniere_connexion'] = date('Y-m-d');
+            ecrire_users($users);
+            return $user;
+        }
     }
     return null;
 }
@@ -49,8 +58,12 @@ function inscrire_user($nom, $prenom, $email, $telephone, $mot_de_passe) {
         "adresse" => "",
         "code_interphone" => "",
         "role" => "client",
+        "statut" => "Standard",
+        "bloque" => false,
+        "taux_remise" => 0,
         "points_fidelite" => 0,
-        "date_inscription" => date("Y-m-d")
+        "date_inscription" => date("Y-m-d"),
+        "date_derniere_connexion" => date("Y-m-d")
     ];
     
     $users[] = $nouveau_user;
