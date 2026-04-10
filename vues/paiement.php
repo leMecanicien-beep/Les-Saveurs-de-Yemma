@@ -16,10 +16,7 @@ $user = $_SESSION['user'];
 $total = $_POST['total'];
 $type  = $_POST['type'];
 $panier = $_POST['panier'];
-$quand  = $_POST['quand'] ?? 'maintenant';
-$heure_souhaitee = ($quand === 'plus_tard' && !empty($_POST['heure_souhaitee']))
-    ? $_POST['heure_souhaitee']
-    : '';
+$heure_souhaitee = !empty($_POST['heure_souhaitee']) ? $_POST['heure_souhaitee'] : '';
 
 // Générer un identifiant de transaction unique
 $transaction = strtoupper(substr(md5(uniqid()), 0, 12));
@@ -43,7 +40,7 @@ $control = md5($api_key . '#' . $transaction . '#' . $total . '#' . $vendeur . '
     <meta charset="UTF-8">
     <title>Paiement - Les Saveurs de Yemma</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/choix_connexion_inscription.css">
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 <div class="card">
