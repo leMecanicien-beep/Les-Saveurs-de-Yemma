@@ -25,7 +25,7 @@ if (!$commande) {
     exit();
 }
 
-// Étapes de suivi selon le type
+//if pour chaque état
 if ($commande['type'] === 'livraison') {
     $etapes = [
         'en_attente'    => ['Commande reçue',    'En attente de préparation (commande programmée)'],
@@ -50,7 +50,7 @@ $statut_actuel = $commande['statut'];
 $idx_actuel = array_search($statut_actuel, $ordre);
 if ($idx_actuel === false) $idx_actuel = 0;
 
-// Livreur si affecté
+
 $livreur = null;
 if ($commande['livreur_id']) {
     foreach ($users_all as $u) {
