@@ -43,13 +43,13 @@ $classe_statut = [
     'abandonnee'    => 'abandonnee',
 ];
 
-// Filtre par statut
+//pour filtrer par statut
 $filtre = $_GET['filtre'] ?? 'toutes';
 $commandes_affichees = $commandes;
 if ($filtre !== 'toutes') {
     $commandes_affichees = array_filter($commandes, fn($c) => $c['statut'] === $filtre);
 }
-// Plus récentes en premier
+//ordre selon date
 usort($commandes_affichees, fn($a, $b) => strcmp($b['date'], $a['date']));
 ?>
 <!DOCTYPE html>
