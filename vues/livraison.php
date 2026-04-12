@@ -11,7 +11,7 @@ $user      = $_SESSION['user'];
 $commandes = json_decode(file_get_contents(__DIR__ . '/../data/commandes.json'), true);
 $users     = lire_users();
 
-// Actions livreur
+//livreur
 if (isset($_GET['action']) && isset($_GET['id'])) {
     $id_cmd = intval($_GET['id']);
     $action = $_GET['action'];
@@ -34,7 +34,6 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     exit();
 }
 
-// Trouver la commande en cours attribuée au livreur
 $ma_commande = null;
 foreach ($commandes as $commande) {
     if ($commande['livreur_id'] === $user['id'] && $commande['statut'] === 'en_livraison') {
@@ -43,7 +42,6 @@ foreach ($commandes as $commande) {
     }
 }
 
-// Historique des livraisons du livreur
 $historique = array_filter($commandes, fn($c) =>
     $c['livreur_id'] === $user['id'] &&
     in_array($c['statut'], ['livree', 'abandonnee'])
