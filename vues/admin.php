@@ -9,7 +9,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 
 $users = lire_users();
 
-// Regrouper par rôle pour l'affichage
+//chaque groupe pour un rôle
 $roles_ordre = ['client', 'restaurateur', 'livreur', 'admin'];
 usort($users, function($a, $b) use ($roles_ordre) {
     $ia = array_search($a['role'], $roles_ordre);
