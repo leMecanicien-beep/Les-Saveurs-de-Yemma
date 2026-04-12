@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user === false) {
             $erreur = "Cet email est déjà utilisé.";
         } else {
-            // Connexion automatique après inscription
             $_SESSION['user'] = $user;
             header('Location: ../index.php');
             exit();
