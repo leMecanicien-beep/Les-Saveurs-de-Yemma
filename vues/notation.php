@@ -8,7 +8,6 @@ if (!isset($_SESSION['user'])) {
 
 $commande_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id  = (int)$_POST['commande_id'];
     $q1  = isset($_POST['q1']) ? (int)$_POST['q1'] : 0;
