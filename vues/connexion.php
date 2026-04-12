@@ -13,10 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user === 'bloque') {
         $erreur = "Votre compte est bloqué. Contactez l'administrateur.";
     } elseif ($user) {
-        // Connexion réussie : on stocke l'user dans la session
         $_SESSION['user'] = $user;
 
-        // Redirection selon le rôle
         if ($user['role'] === 'admin') {
             header('Location: admin.php');
         } elseif ($user['role'] === 'restaurateur') {
