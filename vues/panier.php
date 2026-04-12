@@ -13,7 +13,7 @@ if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = [];
 }
 
-// Ajouter un plat
+//plus un plat
 if (isset($_GET['ajouter'])) {
     $id = intval($_GET['ajouter']);
     if (isset($_SESSION['panier'][$id])) {
@@ -25,7 +25,7 @@ if (isset($_GET['ajouter'])) {
     exit();
 }
 
-// Diminuer la quantité d'un plat
+//moins un plat dans la quantité
 if (isset($_GET['diminuer'])) {
     $id = intval($_GET['diminuer']);
     if (isset($_SESSION['panier'][$id])) {
@@ -38,7 +38,7 @@ if (isset($_GET['diminuer'])) {
     exit();
 }
 
-// Supprimer un plat
+//pour supprimer un plat
 if (isset($_GET['supprimer'])) {
     $id = intval($_GET['supprimer']);
     unset($_SESSION['panier'][$id]);
@@ -46,7 +46,7 @@ if (isset($_GET['supprimer'])) {
     exit();
 }
 
-// Calculer le total
+//total pour panier
 $total = 0;
 foreach ($_SESSION['panier'] as $id => $quantite) {
     foreach ($plats as $plat) {
