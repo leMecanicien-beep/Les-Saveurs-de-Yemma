@@ -19,7 +19,7 @@ if (!$cible) {
     exit();
 }
 
-// Commandes de cet utilisateur
+
 $commandes = json_decode(file_get_contents(__DIR__ . '/../data/commandes.json'), true);
 $ses_commandes = array_filter($commandes, fn($c) => $c['user_id'] === $id_cible);
 usort($ses_commandes, fn($a, $b) => strcmp($b['date'], $a['date']));
