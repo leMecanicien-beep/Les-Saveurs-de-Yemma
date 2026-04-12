@@ -25,11 +25,9 @@ function connecter_user($email, $mot_de_passe) {
     $users = lire_users();
     foreach ($users as &$user) {
         if ($user['email'] === $email && $user['mot_de_passe'] === $mot_de_passe) {
-            // Refuser les comptes bloqués
             if ($user['bloque'] ?? false) {
                 return 'bloque';
             }
-            // Mettre à jour la date de dernière connexion
             $user['date_derniere_connexion'] = date('Y-m-d');
             ecrire_users($users);
             return $user;
@@ -41,12 +39,10 @@ function connecter_user($email, $mot_de_passe) {
 function inscrire_user($nom, $prenom, $email, $telephone, $mot_de_passe) {
     $users = lire_users();
     
-    // Vérifier si email déjà utilisé
     if (trouver_user_par_email($email)) {
         return false;
     }
     
-    // Créer le nouvel utilisateur
     $nouvel_id = max(array_column($users, 'id')) + 1;
     $nouveau_user = [
         "id" => $nouvel_id,
