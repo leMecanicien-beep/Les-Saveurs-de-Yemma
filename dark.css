@@ -1,0 +1,171 @@
+body {
+  background-color: #1a1a2e !important;
+  color: #e0e0e0 !important;
+}
+
+header {
+  background-color: #0f3460 !important;
+}
+
+.enseigne p,
+nav ul li a {
+  color: #c39bd3 !important;
+}
+
+nav ul li a:hover {
+  color: #f0c040 !important;
+}
+
+/* Menus déroulants */
+.deroulant,
+.deroulant2 {
+  background-color: #16213e !important;
+  border-color: #4a4a6a !important;
+}
+
+.deroulant li a,
+.deroulant2 li a {
+  color: #c39bd3 !important;
+}
+
+.deroulant li:hover,
+.deroulant2 li:hover {
+  background-color: #0f3460 !important;
+}
+
+/* Barre de recherche */
+.barre input {
+  background-color: #2a2a4e !important;
+  color: #e0e0e0 !important;
+  border-color: #4a4a6a !important;
+}
+
+.barre input::placeholder {
+  color: #888 !important;
+}
+
+/* Cards / panneaux */
+.card,
+.carteprofil,
+.aliment,
+.commande,
+.livraison,
+.detail-bloc,
+.utilisateur,
+.suivi-card,
+.historique {
+  background-color: #16213e !important;
+  color: #e0e0e0 !important;
+  border-color: #4a4a6a !important;
+}
+
+/* Formulaires */
+input, select, textarea {
+  background-color: #2a2a4e !important;
+  color: #e0e0e0 !important;
+  border-color: #4a4a6a !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #888 !important;
+}
+
+/* Boutons */
+.btn,
+button.btn,
+a.btn {
+  background-color: #6a3d9a !important;
+  color: #fff !important;
+  border-color: #6a3d9a !important;
+}
+
+.btn:hover,
+button.btn:hover,
+a.btn:hover {
+  background-color: #8b5cb8 !important;
+}
+
+/* Liens */
+a {
+  color: #c39bd3 !important;
+}
+
+a:hover {
+  color: #f0c040 !important;
+}
+
+/* Bandeaux */
+.page-banner {
+  background-color: #0f3460 !important;
+  color: #e0e0e0 !important;
+}
+
+/* Tableaux */
+table,
+.table-plats,
+.table-livraison {
+  background-color: #16213e !important;
+  color: #e0e0e0 !important;
+}
+
+th {
+  background-color: #0f3460 !important;
+  color: #e0e0e0 !important;
+}
+
+tr:hover {
+  background-color: #1e2d5a !important;
+}
+
+/* Badges statut */
+.badge-Standard { background-color: #2a5298 !important; color: #e0e0e0 !important; }
+.badge-Premium  { background-color: #7b4f12 !important; color: #e0e0e0 !important; }
+.badge-VIP      { background-color: #6a3d9a !important; color: #e0e0e0 !important; }
+.badge-bloque   { background-color: #8b0000 !important; color: #e0e0e0 !important; }
+
+/* Messages d'erreur / succès */
+.msg-erreur    { background-color: #5a1a1a !important; color: #ff9999 !important; border-color: #8b0000 !important; }
+.notif-succes  { background-color: #1a5a1a !important; color: #99ff99 !important; }
+
+/* Section profil */
+.profil,
+.profil2 {
+  background-color: #1a1a2e !important;
+}
+
+/* Filtre boutons */
+.filtre-btn {
+  background-color: #2a2a4e !important;
+  color: #c39bd3 !important;
+  border-color: #4a4a6a !important;
+}
+
+.filtre-btn.actif,
+.filtre-btn:hover {
+  background-color: #0f3460 !important;
+  color: #f0c040 !important;
+}
+
+/* Étapes de suivi */
+.etape-icon.fait    { background-color: #2a7a2a !important; }
+.etape-icon.actuel  { background-color: #0f3460 !important; }
+.etape-icon.attente { background-color: #3a3a5a !important; }
+.etape-icon.erreur  { background-color: #8b0000 !important; }
+
+/* Bouton thème */
+#btn-theme {
+  background-color: #0f3460;
+  color: #c39bd3;
+  border: 2px solid #4a4a6a;
+}
+
+#btn-theme:hover {
+  background-color: #6a3d9a;
+  color: #fff;
+}
+
+/* Image décorative */
+.tahia {
+  opacity: 0.6 !important;
+}
