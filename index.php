@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/lib/users.php';
+verifier_session_revoquee();
 ?>
 <!DOCTYPE html>
 
@@ -60,12 +61,20 @@ require_once __DIR__ . '/lib/users.php';
             </nav>
 
             <div class="barre">
+                <button id="btn-theme" title="Changer le thème" style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;margin-right:8px;vertical-align:middle;">
+                    🌕 Mode sombre
+                </button>
                 <input type="text" placeholder="Rechercher un plat...">
             </div>
 
         </div>
     </header>
 
+    <?php if (isset($_GET['bloque'])): ?>
+    <div class="msg-erreur" style="margin:20px 40px;padding:12px;border-radius:6px;">
+        Votre compte a été bloqué. Contactez l'administrateur.
+    </div>
+    <?php endif; ?>
 
     <main>
         <section class="presentation">
@@ -103,5 +112,6 @@ require_once __DIR__ . '/lib/users.php';
         </section>
     </main>
     <img src="assets/images/tahia.png" class="tahia" alt="Décoration">
+    <script src="assets/js/theme.js"></script>
 </body>
 </html>
