@@ -210,5 +210,3 @@ $classe_statut = [
 <script src="../assets/js/detail_commande.js"></script>
 </body>
 </html>
-
-</html>
