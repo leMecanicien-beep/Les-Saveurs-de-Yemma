@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user === false) {
             $erreur = "Cet email est déjà utilisé.";
         } else {
+            // Connexion automatique après inscription
             $_SESSION['user'] = $user;
             header('Location: ../index.php');
             exit();
@@ -38,21 +39,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body class="body-centered">
+
+<div style="position:fixed;top:16px;right:16px;z-index:100;">
+    <button id="btn-theme" title="Changer le thème"
+        style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #b98acb;background:#b98acb;color:#fff;">
+        🌕 Mode sombre
+    </button>
+</div>
+
 <div class="card">
     <h2>Inscription</h2>
     <?php if ($erreur): ?>
-        <p class="msg-erreur"><?php echo $erreur; ?></p>
+        <p class="msg-erreur"><?php echo htmlspecialchars($erreur); ?></p>
     <?php endif; ?>
-    <form action="" method="post">
-        <input type="text" name="nom" placeholder="Nom" required>
-        <input type="text" name="prenom" placeholder="Prénom" required>
-        <input type="tel" name="telephone" placeholder="Numéro de téléphone" required>
-        <input type="email" name="email" placeholder="Adresse e-mail" required>
-        <input type="password" name="mot_de_passe" placeholder="Mot de passe" required>
-        <input type="password" name="confirmer" placeholder="Confirmer mot de passe" required>
+    <form id="form-inscription" action="" method="post" novalidate>
+        <div>
+            <input type="text" name="nom" placeholder="Nom" required maxlength="50"
+                   value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>">
+        </div>
+        <div>
+            <input type="text" name="prenom" placeholder="Prénom" required maxlength="50"
+                   value="<?php echo isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : ''; ?>">
+        </div>
+        <div>
+            <input type="tel" name="telephone" placeholder="Numéro de téléphone (ex : 06 12 34 56 78)" required
+                   value="<?php echo isset($_POST['telephone']) ? htmlspecialchars($_POST['telephone']) : ''; ?>">
+        </div>
+        <div>
+            <input type="email" name="email" placeholder="Adresse e-mail" required maxlength="100"
+                   value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+        </div>
+        <div>
+            <input type="password" name="mot_de_passe" placeholder="Mot de passe (min. 6 caractères)" required maxlength="100">
+        </div>
+        <div>
+            <input type="password" name="confirmer" placeholder="Confirmer mot de passe" required maxlength="100">
+        </div>
         <button type="submit" class="btn">S'inscrire</button>
     </form>
     <p><a href="connexion.php">Déjà inscrit ?</a></p>
 </div>
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/validation.js"></script>
 </body>
 </html>
+
