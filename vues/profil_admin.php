@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../lib/users.php';
+verifier_session_revoquee();
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header('Location: connexion.php');
@@ -19,7 +20,7 @@ if (!$cible) {
     exit();
 }
 
-
+// Commandes de cet utilisateur
 $commandes = json_decode(file_get_contents(__DIR__ . '/../data/commandes.json'), true);
 $ses_commandes = array_filter($commandes, fn($c) => $c['user_id'] === $id_cible);
 usort($ses_commandes, fn($a, $b) => strcmp($b['date'], $a['date']));
@@ -59,6 +60,12 @@ $remises_disponibles = [0, 5, 10, 15, 20];
                 <li><a href="deconnexion.php">DÉCONNEXION</a></li>
             </ul>
         </nav>
+        <div class="barre" style="text-align:right;">
+            <button id="btn-theme" title="Changer le thème"
+                style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;">
+                🌕 Mode sombre
+            </button>
+        </div>
     </div>
 </header>
 <main>
@@ -171,5 +178,7 @@ $remises_disponibles = [0, 5, 10, 15, 20];
     </div>
     <?php endif; ?>
 </main>
+<script src="../assets/js/theme.js"></script>
 </body>
+</html>
 </html>
