@@ -6,6 +6,12 @@
     "prix": 12.50,
     "categorie": "Traditionnel",
     "allergenes": ["gluten", "céleri"],
+    "informations_nutritionnelles": {
+      "calories": 520,
+      "proteines": 32,
+      "glucides": 58,
+      "lipides": 14
+    },
     "disponible": true
   },
   {
@@ -15,6 +21,12 @@
     "prix": 11.00,
     "categorie": "Traditionnel",
     "allergenes": [],
+    "informations_nutritionnelles": {
+      "calories": 480,
+      "proteines": 28,
+      "glucides": 35,
+      "lipides": 22
+    },
     "disponible": true
   },
   {
@@ -24,6 +36,12 @@
     "prix": 6.50,
     "categorie": "Entrée",
     "allergenes": ["gluten", "céleri"],
+    "informations_nutritionnelles": {
+      "calories": 210,
+      "proteines": 12,
+      "glucides": 28,
+      "lipides": 6
+    },
     "disponible": true
   },
   {
@@ -33,6 +51,12 @@
     "prix": 4.00,
     "categorie": "Entrée",
     "allergenes": ["gluten", "oeuf", "poisson"],
+    "informations_nutritionnelles": {
+      "calories": 180,
+      "proteines": 14,
+      "glucides": 15,
+      "lipides": 8
+    },
     "disponible": true
   },
   {
@@ -42,6 +66,12 @@
     "prix": 3.50,
     "categorie": "Entrée",
     "allergenes": ["gluten", "oeuf"],
+    "informations_nutritionnelles": {
+      "calories": 155,
+      "proteines": 8,
+      "glucides": 16,
+      "lipides": 7
+    },
     "disponible": true
   },
   {
@@ -51,6 +81,12 @@
     "prix": 4.50,
     "categorie": "Entrée",
     "allergenes": ["gluten"],
+    "informations_nutritionnelles": {
+      "calories": 195,
+      "proteines": 16,
+      "glucides": 15,
+      "lipides": 10
+    },
     "disponible": true
   },
   {
@@ -60,6 +96,12 @@
     "prix": 5.00,
     "categorie": "Entrée",
     "allergenes": ["gluten"],
+    "informations_nutritionnelles": {
+      "calories": 220,
+      "proteines": 15,
+      "glucides": 20,
+      "lipides": 9
+    },
     "disponible": true
   },
   {
@@ -69,6 +111,12 @@
     "prix": 5.00,
     "categorie": "Entrée",
     "allergenes": ["gluten"],
+    "informations_nutritionnelles": {
+      "calories": 235,
+      "proteines": 17,
+      "glucides": 20,
+      "lipides": 11
+    },
     "disponible": true
   },
   {
@@ -78,6 +126,12 @@
     "prix": 4.50,
     "categorie": "Entrée",
     "allergenes": ["gluten"],
+    "informations_nutritionnelles": {
+      "calories": 175,
+      "proteines": 5,
+      "glucides": 22,
+      "lipides": 8
+    },
     "disponible": true
   },
   {
@@ -87,6 +141,12 @@
     "prix": 13.00,
     "categorie": "Grillade",
     "allergenes": [],
+    "informations_nutritionnelles": {
+      "calories": 560,
+      "proteines": 42,
+      "glucides": 18,
+      "lipides": 30
+    },
     "disponible": true
   },
   {
@@ -96,6 +156,12 @@
     "prix": 14.00,
     "categorie": "Grillade",
     "allergenes": [],
+    "informations_nutritionnelles": {
+      "calories": 490,
+      "proteines": 38,
+      "glucides": 10,
+      "lipides": 24
+    },
     "disponible": true
   },
   {
@@ -105,6 +171,12 @@
     "prix": 15.00,
     "categorie": "Grillade",
     "allergenes": [],
+    "informations_nutritionnelles": {
+      "calories": 610,
+      "proteines": 40,
+      "glucides": 8,
+      "lipides": 38
+    },
     "disponible": true
   },
   {
@@ -114,6 +186,12 @@
     "prix": 3.00,
     "categorie": "Dessert",
     "allergenes": ["gluten", "fruits à coque"],
+    "informations_nutritionnelles": {
+      "calories": 145,
+      "proteines": 2,
+      "glucides": 28,
+      "lipides": 4
+    },
     "disponible": true
   },
   {
@@ -123,6 +201,12 @@
     "prix": 3.50,
     "categorie": "Dessert",
     "allergenes": ["gluten", "fruits à coque"],
+    "informations_nutritionnelles": {
+      "calories": 160,
+      "proteines": 3,
+      "glucides": 22,
+      "lipides": 8
+    },
     "disponible": true
   },
   {
@@ -132,6 +216,12 @@
     "prix": 2.00,
     "categorie": "Boisson",
     "allergenes": [],
+    "informations_nutritionnelles": {
+      "calories": 5,
+      "proteines": 0,
+      "glucides": 0,
+      "lipides": 0
+    },
     "disponible": true
   }
 ]
