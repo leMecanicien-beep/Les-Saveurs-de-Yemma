@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../lib/users.php';
+verifier_session_revoquee();
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'restaurateur') {
     header('Location: connexion.php');
@@ -69,16 +70,25 @@ $classe_statut = [
                 <li><a href="deconnexion.php">DÉCONNEXION</a></li>
             </ul>
         </nav>
+        <div class="barre" style="text-align:right;">
+            <button id="btn-theme" title="Changer le thème"
+                style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;">
+                🌕 Mode sombre
+            </button>
+        </div>
     </div>
 </header>
 <main>
     <a href="commandes.php" class="retour">&larr; Retour à la liste</a>
     <h2>Détail de la commande #<?php echo $commande['id']; ?></h2>
 
+    <!-- Champ caché pour l'id commande (utilisé par le JS) -->
+    <input type="hidden" id="commande-id" value="<?php echo $commande['id']; ?>">
+
     <div class="detail-bloc">
         <h3>Informations générales</h3>
         <p><strong>Statut actuel :</strong>
-            <span class="badge <?php echo $classe_statut[$commande['statut']] ?? ''; ?>">
+            <span id="badge-statut-courant" class="badge <?php echo $classe_statut[$commande['statut']] ?? ''; ?>">
                 <?php echo $label_statut[$commande['statut']] ?? $commande['statut']; ?>
             </span>
         </p>
@@ -152,31 +162,33 @@ $classe_statut = [
         <?php endif; ?>
     </div>
 
+    <!-- ═══ Actions restaurateur (Phase 3 — async) ═══ -->
     <div class="detail-bloc">
-        <h3>Actions (disponibles en Phase 3)</h3>
-        <p class="actions-disabled-note">
-            La modification du statut et l'attribution du livreur seront effectives en Phase 3.
-        </p>
+        <h3>Actions restaurateur</h3>
+
+        <p id="actions-msg" style="display:none;padding:10px;border-radius:6px;margin-bottom:12px;"></p>
 
         <div class="actions-form">
-            <div>
+            <!-- Changement de statut -->
+            <div style="margin-bottom:16px;">
                 <label><strong>Changer le statut :</strong></label><br>
-                <select disabled class="select-disabled">
+                <select id="select-statut" style="margin-top:6px;padding:8px;border:2px solid #b98acb;border-radius:6px;">
                     <?php foreach ($label_statut as $val => $lib): ?>
                     <option value="<?php echo $val; ?>" <?php echo $commande['statut'] === $val ? 'selected' : ''; ?>>
                         <?php echo $lib; ?>
                     </option>
                     <?php endforeach; ?>
                 </select>
-                <button disabled class="btn-disabled-statut">
-                    Valider
+                <button id="btn-valider-statut" class="btn" style="margin-left:10px;">
+                    Valider le statut
                 </button>
             </div>
 
             <?php if ($commande['type'] === 'livraison'): ?>
+            <!-- Attribution livreur -->
             <div class="livreur-section">
                 <label><strong>Attribuer un livreur :</strong></label><br>
-                <select disabled class="select-disabled">
+                <select id="select-livreur" style="margin-top:6px;padding:8px;border:2px solid #b98acb;border-radius:6px;">
                     <option value="">-- Choisir un livreur --</option>
                     <?php foreach ($livreurs as $livreur): ?>
                     <option value="<?php echo $livreur['id']; ?>"
@@ -186,7 +198,7 @@ $classe_statut = [
                     </option>
                     <?php endforeach; ?>
                 </select>
-                <button disabled class="btn-disabled-livreur">
+                <button id="btn-attribuer-livreur" class="btn" style="margin-left:10px;">
                     Attribuer
                 </button>
             </div>
@@ -194,5 +206,9 @@ $classe_statut = [
         </div>
     </div>
 </main>
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/detail_commande.js"></script>
 </body>
+</html>
+
 </html>
