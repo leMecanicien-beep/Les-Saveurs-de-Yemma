@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../lib/users.php';
+verifier_session_revoquee();
 
 if (!isset($_SESSION['user'])) {
     header('Location: connexion.php');
@@ -13,7 +14,7 @@ if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = [];
 }
 
-//plus un plat
+// Ajouter un plat
 if (isset($_GET['ajouter'])) {
     $id = intval($_GET['ajouter']);
     if (isset($_SESSION['panier'][$id])) {
@@ -25,7 +26,7 @@ if (isset($_GET['ajouter'])) {
     exit();
 }
 
-//moins un plat dans la quantité
+// Diminuer la quantité d'un plat
 if (isset($_GET['diminuer'])) {
     $id = intval($_GET['diminuer']);
     if (isset($_SESSION['panier'][$id])) {
@@ -38,7 +39,7 @@ if (isset($_GET['diminuer'])) {
     exit();
 }
 
-//pour supprimer un plat
+// Supprimer un plat
 if (isset($_GET['supprimer'])) {
     $id = intval($_GET['supprimer']);
     unset($_SESSION['panier'][$id]);
@@ -46,7 +47,7 @@ if (isset($_GET['supprimer'])) {
     exit();
 }
 
-//total pour panier
+// Calculer le total
 $total = 0;
 foreach ($_SESSION['panier'] as $id => $quantite) {
     foreach ($plats as $plat) {
