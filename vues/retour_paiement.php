@@ -2,6 +2,7 @@
 session_start();
 require_once __DIR__ . '/../lib/users.php';
 require_once __DIR__ . '/../lib/getapikey.php';
+verifier_session_revoquee();
 
 if (!isset($_SESSION['user'])) {
     header('Location: connexion.php');
