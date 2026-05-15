@@ -2,25 +2,51 @@
   {
     "id": 1,
     "nom": "Menu Yemma Complet",
-    "description": "Le menu signature de la maison",
+    "description": "Le menu signature de la maison : une soupe, un plat traditionnel et un dessert",
     "plats_ids": [3, 1, 13],
     "prix_total": 19.00,
+    "nombre_personnes_min": 1,
+    "creneaux": null,
     "disponible": true
   },
   {
     "id": 2,
     "nom": "Menu Grillade",
-    "description": "Pour les amateurs de viande",
+    "description": "Pour les amateurs de viande : une entrée, une grillade et un dessert",
     "plats_ids": [4, 10, 14],
     "prix_total": 18.00,
+    "nombre_personnes_min": 1,
+    "creneaux": null,
     "disponible": true
   },
   {
     "id": 3,
     "nom": "Menu Découverte",
-    "description": "Idéal pour découvrir la cuisine algérienne",
+    "description": "Idéal pour découvrir la cuisine algérienne : entrée, plat du jour et café",
     "plats_ids": [6, 2, 15],
     "prix_total": 16.00,
+    "nombre_personnes_min": 1,
+    "creneaux": null,
+    "disponible": true
+  },
+  {
+    "id": 4,
+    "nom": "Menu Midi Express",
+    "description": "Un menu rapide pour la pause déjeuner : brique, tajine et café",
+    "plats_ids": [5, 2, 15],
+    "prix_total": 14.50,
+    "nombre_personnes_min": 1,
+    "creneaux": ["midi"],
+    "disponible": true
+  },
+  {
+    "id": 5,
+    "nom": "Menu Partage",
+    "description": "Pour partager en famille : samosas assortis, couscous et desserts",
+    "plats_ids": [7, 8, 9, 1, 13, 14],
+    "prix_total": 35.00,
+    "nombre_personnes_min": 2,
+    "creneaux": null,
     "disponible": true
   }
 ]
