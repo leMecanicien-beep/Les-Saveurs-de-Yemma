@@ -1,4 +1,4 @@
-
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +10,9 @@ body {
   background-color: #d9d9d9;
 }
 
+
+
+/* HEADER / NAV */
 
 
 header {
@@ -76,6 +79,10 @@ nav ul li a:hover {
 }
 
 
+
+/* MENUS DÉROULANTS      */
+
+
 .carte {
   position: relative;
 }
@@ -127,6 +134,10 @@ nav ul li a:hover {
 .propos:hover .deroulant2 {
   display: block;
 }
+
+
+
+/* PAGES AVEC CARTE (.card) */
 
 
 .card {
@@ -186,6 +197,10 @@ input:focus {
 }
 
 
+
+/* PAGE BANNER           */
+
+
 .page-banner {
   text-align: center;
   padding: 30px 20px 10px;
@@ -205,6 +220,10 @@ input:focus {
 }
 
 
+
+/* BODY / MAIN CENTRÉ    */
+
+
 body.body-centered {
   min-height: 100vh;
   display: flex;
@@ -220,6 +239,10 @@ main.main-centered {
 }
 
 
+
+/* MESSAGES STATUT       */
+
+
 .msg-erreur {
   color: red;
 }
@@ -231,6 +254,10 @@ main.main-centered {
 .text-danger {
   color: red;
 }
+
+
+
+/* PANIER                */
 
 
 .panier-wrapper {
@@ -362,6 +389,10 @@ main.main-centered {
 }
 
 
+
+/* COMMANDES / DÉTAIL    */
+
+
 .heure-souhaitee-value {
   color: #e67e22;
   font-weight: bold;
@@ -414,6 +445,55 @@ main.main-centered {
 }
 
 
+
+/* BOUTON THÈME          */
+
+
+#btn-theme {
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  border: 2px solid rgba(255,255,255,.6);
+  background: rgba(255,255,255,.15);
+  color: #fff;
+  margin-right: 8px;
+  vertical-align: middle;
+  transition: background .2s, color .2s;
+}
+
+#btn-theme:hover {
+  background: rgba(255,255,255,.3);
+}
+
+
+/* MESSAGES GLOBAUX      */
+
+
+.msg-erreur {
+  background: #fce4e4;
+  border: 1px solid #e74c3c;
+  color: #c0392b;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.notif-succes {
+  background: #e8f8e8;
+  border: 1px solid #27ae60;
+  color: #1e8449;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+
+/* HORAIRES              */
+
+
 .texte-full {
   width: 100%;
   margin-left: 0;
@@ -427,3 +507,4 @@ main.main-centered {
 .td-center {
   text-align: center;
 }
+
