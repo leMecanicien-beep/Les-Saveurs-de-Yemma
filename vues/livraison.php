@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../lib/users.php';
+verifier_session_revoquee();
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'livreur') {
     header('Location: connexion.php');
@@ -11,29 +12,7 @@ $user      = $_SESSION['user'];
 $commandes = json_decode(file_get_contents(__DIR__ . '/../data/commandes.json'), true);
 $users     = lire_users();
 
-//livreur
-if (isset($_GET['action']) && isset($_GET['id'])) {
-    $id_cmd = intval($_GET['id']);
-    $action = $_GET['action'];
-    foreach ($commandes as &$c) {
-        if ($c['id'] === $id_cmd && $c['livreur_id'] === $user['id']) {
-            if ($action === 'livree' && $c['statut'] === 'en_livraison') {
-                $c['statut'] = 'livree';
-            } elseif ($action === 'abandonnee' && $c['statut'] === 'en_livraison') {
-                $c['statut'] = 'abandonnee';
-            }
-            break;
-        }
-    }
-    unset($c);
-    file_put_contents(
-        __DIR__ . '/../data/commandes.json',
-        json_encode($commandes, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
-    );
-    header('Location: livraison.php');
-    exit();
-}
-
+// Trouver la commande en cours attribuée au livreur
 $ma_commande = null;
 foreach ($commandes as $commande) {
     if ($commande['livreur_id'] === $user['id'] && $commande['statut'] === 'en_livraison') {
@@ -42,6 +21,7 @@ foreach ($commandes as $commande) {
     }
 }
 
+// Historique des livraisons du livreur
 $historique = array_filter($commandes, fn($c) =>
     $c['livreur_id'] === $user['id'] &&
     in_array($c['statut'], ['livree', 'abandonnee'])
@@ -79,38 +59,48 @@ if ($ma_commande) {
                 <li><a href="deconnexion.php">DÉCONNEXION</a></li>
             </ul>
         </nav>
+        <div class="barre" style="text-align:right;">
+            <button id="btn-theme" title="Changer le thème"
+                style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;">
+                🌕 Mode sombre
+            </button>
+        </div>
     </div>
 </header>
 <main>
     <div class="page-banner">
         <h2>Espace livreur</h2>
-        <p><?php echo $user['prenom'] . ' ' . $user['nom']; ?></p>
+        <p><?php echo htmlspecialchars($user['prenom'] . ' ' . $user['nom']); ?></p>
     </div>
+
+    <p id="livraison-msg" style="display:none;padding:12px 40px;border-radius:6px;margin:10px 40px;"></p>
 
     <?php if ($ma_commande && $client): ?>
     <div class="livraison">
         <h3>Livraison en cours — Commande #<?php echo $ma_commande['id']; ?></h3>
-        <p><strong>Client :</strong> <?php echo $client['prenom'] . ' ' . $client['nom']; ?></p>
-        <p><strong>Adresse :</strong> <?php echo $ma_commande['adresse_livraison']; ?></p>
-        <p><strong>Code interphone :</strong> <?php echo $client['code_interphone'] ?: 'Aucun'; ?></p>
+        <p><strong>Client :</strong> <?php echo htmlspecialchars($client['prenom'] . ' ' . $client['nom']); ?></p>
+        <p><strong>Adresse :</strong> <?php echo htmlspecialchars($ma_commande['adresse_livraison']); ?></p>
+        <p><strong>Code interphone :</strong> <?php echo htmlspecialchars($client['code_interphone'] ?: 'Aucun'); ?></p>
         <p><strong>Téléphone :</strong>
-            <a href="tel:<?php echo $client['telephone']; ?>"><?php echo $client['telephone']; ?></a>
+            <a href="tel:<?php echo $client['telephone']; ?>"><?php echo htmlspecialchars($client['telephone']); ?></a>
         </p>
         <p><strong>Montant :</strong> <?php echo $ma_commande['montant']; ?>€</p>
 
-        <div class="livraison-actions">
+        <div class="livraison-actions" id="livraison-actions">
             <a href="https://www.google.com/maps/search/?api=1&query=<?php echo urlencode($ma_commande['adresse_livraison']); ?>"
                target="_blank" class="btn">Ouvrir dans Maps</a>
-            <a href="?action=livree&id=<?php echo $ma_commande['id']; ?>"
-               class="btn done"
-               onclick="return confirm('Confirmer la livraison de la commande #<?php echo $ma_commande['id']; ?> ?');">
+            <button id="btn-livree-async"
+                    class="btn done"
+                    data-commande-id="<?php echo $ma_commande['id']; ?>"
+                    data-confirm="Confirmer la livraison de la commande #<?php echo $ma_commande['id']; ?> ?">
                 Livraison terminée
-            </a>
-            <a href="?action=abandonnee&id=<?php echo $ma_commande['id']; ?>"
-               class="btn abandon"
-               onclick="return confirm('Confirmer l\'abandon de la livraison (adresse introuvable) ?');">
+            </button>
+            <button id="btn-abandonne-async"
+                    class="btn abandon"
+                    data-commande-id="<?php echo $ma_commande['id']; ?>"
+                    data-confirm="Confirmer l'abandon de la livraison (adresse introuvable) ?">
                 Abandonner
-            </a>
+            </button>
         </div>
     </div>
     <?php else: ?>
@@ -141,7 +131,7 @@ if ($ma_commande) {
             <tr>
                 <td>#<?php echo $h['id']; ?></td>
                 <td><?php echo $h['date']; ?></td>
-                <td><?php echo $c_client ? $c_client['prenom'] . ' ' . $c_client['nom'] : 'Inconnu'; ?></td>
+                <td><?php echo $c_client ? htmlspecialchars($c_client['prenom'] . ' ' . $c_client['nom']) : 'Inconnu'; ?></td>
                 <td>
                     <?php if ($h['statut'] === 'livree'): ?>
                     <span class="statut-livree">Livrée</span>
@@ -156,5 +146,7 @@ if ($ma_commande) {
     </div>
     <?php endif; ?>
 </main>
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/livraison.js"></script>
 </body>
 </html>
