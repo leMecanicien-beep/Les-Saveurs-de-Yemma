@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../lib/users.php';
+verifier_session_revoquee();
 
 if (!isset($_SESSION['user'])) {
     header('Location: connexion.php');
@@ -38,13 +39,11 @@ $label_statut = [
 
 <header>
     <div class="cadre">
-
         <div class="enseigne">
             <p>Les saveurs</p>
             <p>de</p>
             <p>Yemma</p>
         </div>
-
         <nav>
             <ul>
                 <li><a href="profil.php">PROFIL</a></li>
@@ -68,34 +67,74 @@ $label_statut = [
                 <li><a href="deconnexion.php">DÉCONNEXION</a></li>
             </ul>
         </nav>
-
         <div class="barre">
+            <button id="btn-theme" title="Changer le thème"
+                style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;margin-right:8px;vertical-align:middle;">
+                🌕 Mode sombre
+            </button>
             <input type="text" placeholder="Rechercher un plat...">
         </div>
-
     </div>
 </header>
 
 <main>
     <?php if (isset($_GET['note']) && $_GET['note'] === 'ok'): ?>
-        <p class="notif-succes">Merci pour votre avis ! ⭐</p>
+        <p class="notif-succes">Merci pour votre avis !</p>
     <?php endif; ?>
 
-    <section class="profil">
+    <p id="profil-msg" style="display:none;margin:10px 40px;padding:10px;border-radius:6px;"></p>
 
+    <section class="profil">
         <h2>Profil personnel</h2>
 
         <div class="profil2">
 
+            <!-- Carte informations personnelles -->
             <div class="carteprofil">
                 <h3>Informations personnelles</h3>
-                <p><strong>Nom :</strong> <?php echo htmlspecialchars($user['nom']); ?></p>
-                <p><strong>Prénom :</strong> <?php echo htmlspecialchars($user['prenom']); ?></p>
-                <p><strong>Email :</strong> <?php echo htmlspecialchars($user['email']); ?></p>
-                <p><strong>Téléphone :</strong> <?php echo htmlspecialchars($user['telephone']); ?></p>
-                <p><strong>Adresse :</strong> <?php echo $user['adresse'] ? htmlspecialchars($user['adresse']) : 'Non renseignée'; ?></p>
-                <div class="info">
-                    <a href="#" class="edit"><img src="../assets/images/crayon2.png" alt="Modifier" class="crayon">Modifier</a>
+
+                <!-- Vue lecture seule -->
+                <div id="view-profil">
+                    <p><strong>Nom :</strong> <span id="view-nom"><?php echo htmlspecialchars($user['nom']); ?></span></p>
+                    <p><strong>Prénom :</strong> <span id="view-prenom"><?php echo htmlspecialchars($user['prenom']); ?></span></p>
+                    <p><strong>Email :</strong> <?php echo htmlspecialchars($user['email']); ?></p>
+                    <p><strong>Téléphone :</strong> <span id="view-tel"><?php echo htmlspecialchars($user['telephone']); ?></span></p>
+                    <p><strong>Adresse :</strong> <span id="view-adresse"><?php echo $user['adresse'] ? htmlspecialchars($user['adresse']) : 'Non renseignée'; ?></span></p>
+                </div>
+
+                <!-- Formulaire d'édition (masqué par défaut) -->
+                <form id="form-edit-profil" style="display:none;margin-top:12px;" novalidate>
+                    <div style="margin-bottom:8px;">
+                        <label style="display:block;font-weight:bold;margin-bottom:3px;">Nom</label>
+                        <input type="text" name="nom" value="<?php echo htmlspecialchars($user['nom']); ?>" required maxlength="50" style="width:100%;padding:8px;">
+                    </div>
+                    <div style="margin-bottom:8px;">
+                        <label style="display:block;font-weight:bold;margin-bottom:3px;">Prénom</label>
+                        <input type="text" name="prenom" value="<?php echo htmlspecialchars($user['prenom']); ?>" required maxlength="50" style="width:100%;padding:8px;">
+                    </div>
+                    <div style="margin-bottom:8px;">
+                        <label style="display:block;font-weight:bold;margin-bottom:3px;">Téléphone</label>
+                        <input type="tel" name="telephone" value="<?php echo htmlspecialchars($user['telephone']); ?>" maxlength="20" style="width:100%;padding:8px;">
+                    </div>
+                    <div style="margin-bottom:8px;">
+                        <label style="display:block;font-weight:bold;margin-bottom:3px;">Adresse de livraison</label>
+                        <input type="text" name="adresse" value="<?php echo htmlspecialchars($user['adresse'] ?? ''); ?>" maxlength="200" style="width:100%;padding:8px;">
+                    </div>
+                    <div style="margin-bottom:12px;">
+                        <label style="display:block;font-weight:bold;margin-bottom:3px;">Code interphone</label>
+                        <input type="text" name="code_interphone" value="<?php echo htmlspecialchars($user['code_interphone'] ?? ''); ?>" maxlength="10" style="width:100%;padding:8px;">
+                    </div>
+                    <div style="display:flex;gap:10px;">
+                        <button type="submit" class="btn">Enregistrer</button>
+                        <button type="button" id="btn-annuler-profil" class="btn" style="background:#888;">Annuler</button>
+                    </div>
+                </form>
+
+                <div class="info" style="margin-top:12px;">
+                    <button id="btn-modifier-profil" class="btn" style="cursor:pointer;background:none;border:none;color:inherit;padding:0;font-size:inherit;">
+                        <img src="../assets/images/crayon2.png" alt="" class="crayon" style="height:16px;vertical-align:middle;margin-right:4px;">
+                        <span style="text-decoration:underline;">Modifier</span>
+                    </button>
                 </div>
             </div>
 
@@ -134,9 +173,10 @@ $label_statut = [
             </div>
 
         </div>
-
     </section>
 </main>
 <img src="../assets/images/tahia.png" class="tahia" alt="Décoration">
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/profil.js"></script>
 </body>
 </html>
