@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../lib/users.php';
+verifier_session_revoquee();
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'restaurateur') {
     header('Location: connexion.php');
@@ -43,13 +44,12 @@ $classe_statut = [
     'abandonnee'    => 'abandonnee',
 ];
 
-//pour filtrer par statut
+// Filtre par statut
 $filtre = $_GET['filtre'] ?? 'toutes';
 $commandes_affichees = $commandes;
 if ($filtre !== 'toutes') {
     $commandes_affichees = array_filter($commandes, fn($c) => $c['statut'] === $filtre);
 }
-//ordre selon date
 usort($commandes_affichees, fn($a, $b) => strcmp($b['date'], $a['date']));
 ?>
 <!DOCTYPE html>
@@ -75,6 +75,12 @@ usort($commandes_affichees, fn($a, $b) => strcmp($b['date'], $a['date']));
                 <li><a href="deconnexion.php">DÉCONNEXION</a></li>
             </ul>
         </nav>
+        <div class="barre" style="text-align:right;">
+            <button id="btn-theme" title="Changer le thème"
+                style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;">
+                🌕 Mode sombre
+            </button>
+        </div>
     </div>
 </header>
 <main>
@@ -94,7 +100,7 @@ usort($commandes_affichees, fn($a, $b) => strcmp($b['date'], $a['date']));
     <div class="commande">
         <div class="commande-info">
             <h3>Commande #<?php echo $commande['id']; ?></h3>
-            <p><strong>Client :</strong> <?php echo $client ? $client['prenom'] . ' ' . $client['nom'] : 'Inconnu'; ?></p>
+            <p><strong>Client :</strong> <?php echo $client ? htmlspecialchars($client['prenom'] . ' ' . $client['nom']) : 'Inconnu'; ?></p>
             <p><strong>Type :</strong>
                 <?php
                 $types = ['livraison' => 'Livraison', 'emporter' => 'À emporter', 'sur_place' => 'Sur place'];
@@ -110,7 +116,7 @@ usort($commandes_affichees, fn($a, $b) => strcmp($b['date'], $a['date']));
                 <?php foreach ($commande['plats_ids'] as $plat_id): ?>
                 <?php $plat = trouver_plat($plats, $plat_id); ?>
                 <?php $qte = $commande['quantites'][(string)$plat_id] ?? 1; ?>
-                <?php if ($plat): ?><span><?php echo $plat['nom']; ?> ×<?php echo $qte; ?></span>&nbsp; <?php endif; ?>
+                <?php if ($plat): ?><span><?php echo htmlspecialchars($plat['nom']); ?> ×<?php echo $qte; ?></span>&nbsp; <?php endif; ?>
                 <?php endforeach; ?>
             </p>
         </div>
@@ -124,5 +130,7 @@ usort($commandes_affichees, fn($a, $b) => strcmp($b['date'], $a['date']));
     </div>
     <?php endforeach; ?>
 </main>
+<script src="../assets/js/theme.js"></script>
 </body>
 </html>
+
