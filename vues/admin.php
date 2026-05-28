@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../lib/users.php';
+require_once __DIR__ . '/../lib/logs.php';
 verifier_session_revoquee();
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
@@ -9,6 +10,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 }
 
 $users = lire_users();
+$logs  = lire_logs(50);
 
 $roles_ordre = ['client', 'restaurateur', 'livreur', 'admin'];
 usort($users, function($a, $b) use ($roles_ordre) {
@@ -37,6 +39,7 @@ usort($users, function($a, $b) use ($roles_ordre) {
         <nav>
             <ul>
                 <li><a href="admin.php">UTILISATEURS</a></li>
+                <li><a href="admin.php#logs">LOGS</a></li>
                 <li><a href="deconnexion.php">DÉCONNEXION</a></li>
             </ul>
         </nav>
@@ -92,13 +95,65 @@ usort($users, function($a, $b) use ($roles_ordre) {
                     Bloquer
                 </button>
                 <?php endif; ?>
-                <button class="btn-statut" disabled title="Disponible en Phase 4">Modifier statut</button>
+                <button class="btn-statut"
+                        data-user-id="<?php echo $user['id']; ?>"
+                        data-statut="<?php echo htmlspecialchars($user['statut'] ?? 'Standard'); ?>">
+                    Modifier statut
+                </button>
             </div>
         </div>
         <?php endforeach; ?>
+    </div>
+    <!-- Section logs d'incidents -->
+    <div class="page-banner" id="logs" style="margin-top:40px;">
+        <h2>Logs d'incidents</h2>
+        <p>50 événements les plus récents</p>
+    </div>
+
+    <?php
+    $labels_logs = [
+        'mauvais_mdp'              => ['label' => 'Mauvais MDP',          'couleur' => '#e74c3c'],
+        'compte_bloque_tentative'  => ['label' => 'Tentative compte bloqué', 'couleur' => '#e67e22'],
+        'connexion_reussie'        => ['label' => 'Connexion',             'couleur' => '#27ae60'],
+        'inscription'              => ['label' => 'Inscription',           'couleur' => '#2980b9'],
+        'blocage_compte'           => ['label' => 'Blocage',               'couleur' => '#c0392b'],
+        'deblocage_compte'         => ['label' => 'Déblocage',             'couleur' => '#16a085'],
+    ];
+    ?>
+    <div style="overflow-x:auto;margin:0 24px 40px;">
+        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+            <thead>
+                <tr style="background:#b98acb;color:#fff;text-align:left;">
+                    <th style="padding:10px;">Date</th>
+                    <th style="padding:10px;">Type</th>
+                    <th style="padding:10px;">Message</th>
+                    <th style="padding:10px;">IP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (empty($logs)): ?>
+                <tr><td colspan="4" style="padding:16px;text-align:center;color:#888;">Aucun log pour l'instant.</td></tr>
+                <?php else: ?>
+                <?php foreach ($logs as $log): ?>
+                <?php $info = $labels_logs[$log['type']] ?? ['label' => $log['type'], 'couleur' => '#888']; ?>
+                <tr style="border-bottom:1px solid #eee;">
+                    <td style="padding:8px 10px;white-space:nowrap;"><?php echo htmlspecialchars($log['date']); ?></td>
+                    <td style="padding:8px 10px;">
+                        <span style="background:<?php echo $info['couleur']; ?>;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;">
+                            <?php echo htmlspecialchars($info['label']); ?>
+                        </span>
+                    </td>
+                    <td style="padding:8px 10px;"><?php echo htmlspecialchars($log['message']); ?></td>
+                    <td style="padding:8px 10px;font-family:monospace;"><?php echo htmlspecialchars($log['ip']); ?></td>
+                </tr>
+                <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
     </div>
 </main>
 <script src="../assets/js/theme.js"></script>
 <script src="../assets/js/admin.js"></script>
 </body>
 </html>
+
