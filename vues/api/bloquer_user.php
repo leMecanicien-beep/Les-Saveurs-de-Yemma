@@ -1,7 +1,16 @@
 <?php
-
+/**
+ * API : Bloquer / Débloquer un utilisateur (admin)
+ * Méthode : POST (JSON body)
+ * Body : { user_id }
+ * Retourne : JSON { success, message, bloque }
+ *
+ * Si l'utilisateur est bloqué, sa session est invalidée côté serveur
+ * en ajoutant son id dans un fichier de sessions révoquées.
+ */
 session_start();
 require_once __DIR__ . '/../../lib/users.php';
+require_once __DIR__ . '/../../lib/logs.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -50,6 +59,13 @@ if (!$updated) {
 }
 
 ecrire_users($users);
+
+$admin_id = $_SESSION['user']['id'];
+if ($bloque) {
+    ajouter_log('blocage_compte', "Compte bloqué (user_id=$user_id) par admin_id=$admin_id", $admin_id);
+} else {
+    ajouter_log('deblocage_compte', "Compte débloqué (user_id=$user_id) par admin_id=$admin_id", $admin_id);
+}
 
 // Si l'utilisateur est bloqué : noter son ID dans un fichier pour invalider sa session
 // (mécanisme simple : à chaque page PHP on vérifie ce fichier)
