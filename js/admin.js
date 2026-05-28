@@ -1,3 +1,5 @@
+// admin.js - Blocage et déblocage des utilisateurs (espace admin)
+
 // Afficher un message temporaire en bas de l'écran
 function afficherMessage(message, type) {
     var toast = document.getElementById('admin-toast');
@@ -30,6 +32,41 @@ function afficherMessage(message, type) {
 
 document.addEventListener('DOMContentLoaded', function () {
     var boutons = document.querySelectorAll('.btn-bloquer');
+
+    // Modifier statut (Standard / VIP / Premium)
+    document.querySelectorAll('.btn-statut').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var userId  = parseInt(btn.dataset.userId);
+            var actuel  = btn.dataset.statut || 'Standard';
+            var statuts = ['Standard', 'VIP', 'Premium'];
+            var choix   = prompt('Choisir un statut : Standard, VIP, Premium\n(actuel : ' + actuel + ')', actuel);
+            if (!choix || !statuts.includes(choix)) return;
+
+            fetch('api/modifier_statut.php', {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify({ user_id: userId, statut: choix })
+            })
+            .then(r => r.json())
+            .then(function (res) {
+                if (res.success) {
+                    btn.dataset.statut = res.statut;
+                    var card = btn.closest('.utilisateur');
+                    if (card) {
+                        var badgeZone = card.querySelector('.statut-badges');
+                        if (badgeZone) {
+                            var oldBadge = badgeZone.querySelector('[class*="badge-"]:not(.badge-bloque-dyn)');
+                            if (oldBadge) { oldBadge.className = 'badge-statut badge-' + res.statut; oldBadge.textContent = res.statut; }
+                        }
+                    }
+                    afficherMessage('Statut mis à jour : ' + res.statut, 'succes');
+                } else {
+                    afficherMessage(res.message, 'erreur');
+                }
+            })
+            .catch(() => afficherMessage('Erreur réseau.', 'erreur'));
+        });
+    });
 
     boutons.forEach(function (btn) {
         btn.removeAttribute('disabled');
