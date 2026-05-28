@@ -14,6 +14,20 @@ if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = [];
 }
 
+// Recommander une ancienne commande → remplit le panier avec ses articles
+if (isset($_GET['recommander'])) {
+    $commande_id = intval($_GET['recommander']);
+    $toutes = json_decode(file_get_contents(__DIR__ . '/../data/commandes.json'), true);
+    foreach ($toutes as $c) {
+        if ($c['id'] === $commande_id && $c['user_id'] === $_SESSION['user']['id']) {
+            $_SESSION['panier'] = array_map('intval', $c['quantites']);
+            break;
+        }
+    }
+    header('Location: panier.php');
+    exit();
+}
+
 // Ajouter un plat
 if (isset($_GET['ajouter'])) {
     $id = intval($_GET['ajouter']);
