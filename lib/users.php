@@ -40,16 +40,27 @@ function trouver_user_par_email($email) {
 function connecter_user($email, $mot_de_passe) {
     $users = lire_users();
     foreach ($users as &$user) {
-        if ($user['email'] === $email && $user['mot_de_passe'] === $mot_de_passe) {
-            // Refuser les comptes bloqués
-            if ($user['bloque'] ?? false) {
-                return 'bloque';
+        if ($user['email'] !== $email) continue;
+
+        $hash = $user['mot_de_passe'];
+        // Migration : si l'ancien MDP est en clair, on vérifie en clair puis on hash
+        if (str_starts_with($hash, '$2y$')) {
+            $ok = password_verify($mot_de_passe, $hash);
+        } else {
+            $ok = ($hash === $mot_de_passe);
+            if ($ok) {
+                $user['mot_de_passe'] = password_hash($mot_de_passe, PASSWORD_DEFAULT);
             }
-            // Mettre à jour la date de dernière connexion
-            $user['date_derniere_connexion'] = date('Y-m-d');
-            ecrire_users($users);
-            return $user;
         }
+
+        if (!$ok) continue;
+
+        if ($user['bloque'] ?? false) {
+            return 'bloque';
+        }
+        $user['date_derniere_connexion'] = date('Y-m-d');
+        ecrire_users($users);
+        return $user;
     }
     return null;
 }
@@ -69,7 +80,7 @@ function inscrire_user($nom, $prenom, $email, $telephone, $mot_de_passe) {
         "nom" => $nom,
         "prenom" => $prenom,
         "email" => $email,
-        "mot_de_passe" => $mot_de_passe,
+        "mot_de_passe" => password_hash($mot_de_passe, PASSWORD_DEFAULT),
         "telephone" => $telephone,
         "adresse" => "",
         "code_interphone" => "",
