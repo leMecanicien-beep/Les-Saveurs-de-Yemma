@@ -153,6 +153,7 @@ $label_statut = [
                             <small><?php echo $commande['date']; ?></small>
                             &nbsp;
                             <a href="suivi.php?id=<?php echo $commande['id']; ?>" class="lien-sm">Suivre</a>
+                            <a href="panier.php?recommander=<?php echo $commande['id']; ?>" class="lien-sm" title="Recommander les mêmes articles">↺ Recommander</a>
                             <?php if ($commande['statut'] === 'livree' && !$commande['note']): ?>
                                 &nbsp;<a href="notation.php?id=<?php echo $commande['id']; ?>" class="lien-noter">
                                     <img src="../assets/images/etoile.png" class="etoile" alt="Noter">Noter
@@ -180,3 +181,4 @@ $label_statut = [
 <script src="../assets/js/profil.js"></script>
 </body>
 </html>
+
