@@ -1,34 +1,46 @@
 <?php
 session_start();
 require_once __DIR__ . '/../lib/users.php';
+require_once __DIR__ . '/../lib/logs.php';
+require_once __DIR__ . '/../lib/csrf.php';
 
 $erreur = "";
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'inconnue';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email        = $_POST['email'] ?? '';
-    $mot_de_passe = $_POST['mot_de_passe'] ?? '';
+    verifier_token_csrf();
 
-    $user = connecter_user($email, $mot_de_passe);
-
-    if ($user === 'bloque') {
-        $erreur = "Votre compte est bloqué. Contactez l'administrateur.";
-    } elseif ($user) {
-        $_SESSION['user'] = $user;
-
-        if ($user['role'] === 'admin') {
-            header('Location: admin.php');
-        } elseif ($user['role'] === 'restaurateur') {
-            header('Location: commandes.php');
-        } elseif ($user['role'] === 'livreur') {
-            header('Location: livraison.php');
-        } else {
-            header('Location: ../index.php');
-        }
-        exit();
+    if (compter_tentatives_ip($ip) >= 5) {
+        $erreur = "Trop de tentatives. Réessayez dans 15 minutes.";
     } else {
-        $erreur = "Email ou mot de passe incorrect.";
+        $email        = trim($_POST['email'] ?? '');
+        $mot_de_passe = $_POST['mot_de_passe'] ?? '';
+
+        $user = connecter_user($email, $mot_de_passe);
+
+        if ($user === 'bloque') {
+            ajouter_log('compte_bloque_tentative', "Tentative de connexion sur un compte bloqué : $email");
+            $erreur = "Votre compte est bloqué. Contactez l'administrateur.";
+        } elseif ($user) {
+            ajouter_log('connexion_reussie', "Connexion réussie : $email", $user['id']);
+            $_SESSION['user'] = $user;
+            if ($user['role'] === 'admin') {
+                header('Location: admin.php');
+            } elseif ($user['role'] === 'restaurateur') {
+                header('Location: commandes.php');
+            } elseif ($user['role'] === 'livreur') {
+                header('Location: livraison.php');
+            } else {
+                header('Location: ../index.php');
+            }
+            exit();
+        } else {
+            ajouter_log('mauvais_mdp', "Mauvais mot de passe pour : $email");
+            $erreur = "Email ou mot de passe incorrect.";
+        }
     }
 }
+$csrf = generer_token_csrf();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -53,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="msg-erreur"><?php echo htmlspecialchars($erreur); ?></p>
     <?php endif; ?>
     <form id="form-connexion" action="" method="post" novalidate>
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf); ?>">
         <div>
             <input type="email" name="email" placeholder="Adresse e-mail" required
                    value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
