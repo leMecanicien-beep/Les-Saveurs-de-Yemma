@@ -210,7 +210,7 @@ $remises_disponibles = [0, 5, 10, 15, 20];
             var nom    = btnBloquer.dataset.nom || 'cet utilisateur';
             if (!confirm('Voulez-vous ' + (bloque ? 'débloquer' : 'bloquer') + ' ' + nom + ' ?')) return;
             btnBloquer.disabled = true;
-            fetch('../api/bloquer_user.php', {
+            fetch('api/bloquer_user.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ user_id: userId })
@@ -237,7 +237,7 @@ $remises_disponibles = [0, 5, 10, 15, 20];
         btnStatut.addEventListener('click', function () {
             var userId = parseInt(btnStatut.dataset.userId);
             var statut = document.getElementById('select-statut-profil').value;
-            fetch('../api/modifier_statut.php', {
+            fetch('api/modifier_statut.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ user_id: userId, statut: statut })
@@ -260,7 +260,7 @@ $remises_disponibles = [0, 5, 10, 15, 20];
         btnRemise.addEventListener('click', function () {
             var userId = parseInt(btnRemise.dataset.userId);
             var remise = parseInt(document.getElementById('select-remise-profil').value);
-            fetch('../api/modifier_remise.php', {
+            fetch('api/modifier_remise.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ user_id: userId, taux_remise: remise })
@@ -280,3 +280,4 @@ $remises_disponibles = [0, 5, 10, 15, 20];
 </script>
 </body>
 </html>
+
