@@ -208,3 +208,80 @@ tr:hover {
   opacity: 0.4 !important;
   filter: grayscale(100%) !important;
 }
+
+/* ── Page commandes (restaurateur) ── */
+.commande h3 { color: #f0f0f0 !important; }
+.commande p  { color: #ccc !important; }
+
+.btn-detail {
+  background-color: #333 !important;
+  color: #ddd !important;
+  border-color: #555 !important;
+  cursor: pointer !important;
+}
+.btn-detail:hover {
+  background-color: #555 !important;
+  color: #fff !important;
+}
+
+.retour,
+.lien-retour { color: #ccc !important; }
+.retour:hover,
+.lien-retour:hover { color: #fff !important; }
+
+/* ── Page détail commande ── */
+.detail-bloc h3  { color: #ddd !important; }
+.detail-bloc p   { color: #ccc !important; }
+
+.table-plats th  { background: #222 !important; color: #f0f0f0 !important; }
+.table-plats td  { color: #f0f0f0 !important; border-color: #333 !important; }
+
+.info-menus { color: #aaa !important; }
+
+/* ── Page profil admin ── */
+.info-card {
+  background-color: #1a1a1a !important;
+  color: #f0f0f0 !important;
+}
+.info-card h3 { color: #ddd !important; }
+.info-card p  { color: #ccc !important; }
+.actif-text   { color: #5fba7d !important; }
+
+/* ── Utilisateur cards (admin) ── */
+.utilisateur h3 { color: #ddd !important; }
+.utilisateur p  { color: #ccc !important; }
+
+/* ── Page suivi ── */
+.plats-liste {
+  background-color: #222 !important;
+}
+.plats-liste h4  { color: #ddd !important; }
+.plat-ligne      { border-color: #444 !important; color: #f0f0f0 !important; }
+.total-ligne     { color: #f0f0f0 !important; }
+.etape-texte span { color: #aaa !important; }
+.etape-ligne     { background: #444 !important; }
+.note-donnee     { color: #aaa !important; }
+
+/* ── Pages accueil / info ── */
+.page-banner p { color: #ccc !important; }
+.page-banner h2 { color: #f0f0f0 !important; }
+
+/* ── Table admin (logs) ── */
+.table-admin td { color: #ccc !important; border-color: #333 !important; }
+.table-admin th { color: #f0f0f0 !important; }
+.table-admin tbody tr { border-color: #333 !important; }
+
+/* Garantir que tous les boutons actifs ont le bon curseur */
+button:not(:disabled),
+a[href],
+.btn,
+.btn-detail,
+.filtre-btn,
+.filtre-cat,
+.btn-bloquer,
+.btn-statut,
+.btn-admin:not(:disabled),
+.btn-profil {
+  cursor: pointer !important;
+}
+
