@@ -44,6 +44,14 @@ $control = md5($api_key . '#' . $transaction . '#' . $total . '#' . $vendeur . '
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
+
+<div style="position:fixed;top:16px;right:16px;z-index:100;">
+    <button id="btn-theme" title="Changer le thème"
+        style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #b98acb;background:#b98acb;color:#fff;">
+        🌕 Mode sombre
+    </button>
+</div>
+
 <div class="card">
     <h2>Récapitulatif</h2>
     <p><strong>Total :</strong> <?php echo $total; ?>€</p>
@@ -64,5 +72,6 @@ $control = md5($api_key . '#' . $transaction . '#' . $total . '#' . $vendeur . '
     </form>
     <p><a href="panier.php">Retour au panier</a></p>
 </div>
+<script src="../assets/js/theme.js"></script>
 </body>
 </html>
