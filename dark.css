@@ -1,43 +1,45 @@
+/* MODE NOIR & BLANC */
+
 body {
-  background-color: #1a1a2e !important;
-  color: #e0e0e0 !important;
+  background-color: #111 !important;
+  color: #f0f0f0 !important;
 }
 
 header {
-  background-color: #0f3460 !important;
+  background-color: #000 !important;
 }
 
 .enseigne p,
 nav ul li a {
-  color: #c39bd3 !important;
+  color: #fff !important;
 }
 
 nav ul li a:hover {
-  color: #f0c040 !important;
+  color: #aaa !important;
 }
 
 /* Menus déroulants */
 .deroulant,
 .deroulant2 {
-  background-color: #16213e !important;
-  border-color: #4a4a6a !important;
+  background-color: #1a1a1a !important;
+  border-color: #444 !important;
 }
 
 .deroulant li a,
 .deroulant2 li a {
-  color: #c39bd3 !important;
+  color: #ddd !important;
 }
 
 .deroulant li:hover,
 .deroulant2 li:hover {
-  background-color: #0f3460 !important;
+  background-color: #333 !important;
 }
 
 /* Barre de recherche */
 .barre input {
-  background-color: #2a2a4e !important;
-  color: #e0e0e0 !important;
-  border-color: #4a4a6a !important;
+  background-color: #222 !important;
+  color: #f0f0f0 !important;
+  border-color: #555 !important;
 }
 
 .barre input::placeholder {
@@ -54,16 +56,16 @@ nav ul li a:hover {
 .utilisateur,
 .suivi-card,
 .historique {
-  background-color: #16213e !important;
-  color: #e0e0e0 !important;
-  border-color: #4a4a6a !important;
+  background-color: #1a1a1a !important;
+  color: #f0f0f0 !important;
+  border-color: #444 !important;
 }
 
 /* Formulaires */
 input, select, textarea {
-  background-color: #2a2a4e !important;
-  color: #e0e0e0 !important;
-  border-color: #4a4a6a !important;
+  background-color: #222 !important;
+  color: #f0f0f0 !important;
+  border-color: #555 !important;
 }
 
 input::placeholder,
@@ -75,97 +77,98 @@ textarea::placeholder {
 .btn,
 button.btn,
 a.btn {
-  background-color: #6a3d9a !important;
+  background-color: #333 !important;
   color: #fff !important;
-  border-color: #6a3d9a !important;
+  border-color: #666 !important;
 }
 
 .btn:hover,
 button.btn:hover,
 a.btn:hover {
-  background-color: #8b5cb8 !important;
+  background-color: #555 !important;
 }
 
 /* Liens */
 a {
-  color: #c39bd3 !important;
+  color: #ccc !important;
 }
 
 a:hover {
-  color: #f0c040 !important;
+  color: #fff !important;
 }
 
 /* Bandeaux */
 .page-banner {
-  background-color: #0f3460 !important;
-  color: #e0e0e0 !important;
+  background-color: #000 !important;
+  color: #f0f0f0 !important;
 }
 
 /* Tableaux */
 table,
 .table-plats,
 .table-livraison {
-  background-color: #16213e !important;
-  color: #e0e0e0 !important;
+  background-color: #1a1a1a !important;
+  color: #f0f0f0 !important;
 }
 
 th {
-  background-color: #0f3460 !important;
-  color: #e0e0e0 !important;
+  background-color: #000 !important;
+  color: #f0f0f0 !important;
 }
 
 tr:hover {
-  background-color: #1e2d5a !important;
+  background-color: #2a2a2a !important;
 }
 
 /* Badges statut */
-.badge-Standard { background-color: #2a5298 !important; color: #e0e0e0 !important; }
-.badge-Premium  { background-color: #7b4f12 !important; color: #e0e0e0 !important; }
-.badge-VIP      { background-color: #6a3d9a !important; color: #e0e0e0 !important; }
-.badge-bloque   { background-color: #8b0000 !important; color: #e0e0e0 !important; }
+.badge-Standard { background-color: #333 !important; color: #f0f0f0 !important; }
+.badge-Premium  { background-color: #555 !important; color: #f0f0f0 !important; }
+.badge-VIP      { background-color: #222 !important; color: #fff !important; border: 1px solid #fff !important; }
+.badge-bloque   { background-color: #000 !important; color: #f0f0f0 !important; border: 1px solid #888 !important; }
 
 /* Messages d'erreur / succès */
-.msg-erreur    { background-color: #5a1a1a !important; color: #ff9999 !important; border-color: #8b0000 !important; }
-.notif-succes  { background-color: #1a5a1a !important; color: #99ff99 !important; }
+.msg-erreur    { background-color: #2a0000 !important; color: #ffaaaa !important; border-color: #600 !important; }
+.notif-succes  { background-color: #002a00 !important; color: #aaffaa !important; }
 
 /* Section profil */
 .profil,
 .profil2 {
-  background-color: #1a1a2e !important;
+  background-color: #111 !important;
 }
 
 /* Filtre boutons */
 .filtre-btn {
-  background-color: #2a2a4e !important;
-  color: #c39bd3 !important;
-  border-color: #4a4a6a !important;
+  background-color: #222 !important;
+  color: #ddd !important;
+  border-color: #555 !important;
 }
 
 .filtre-btn.actif,
 .filtre-btn:hover {
-  background-color: #0f3460 !important;
-  color: #f0c040 !important;
+  background-color: #444 !important;
+  color: #fff !important;
 }
 
 /* Étapes de suivi */
-.etape-icon.fait    { background-color: #2a7a2a !important; }
-.etape-icon.actuel  { background-color: #0f3460 !important; }
-.etape-icon.attente { background-color: #3a3a5a !important; }
-.etape-icon.erreur  { background-color: #8b0000 !important; }
+.etape-icon.fait    { background-color: #2a2a2a !important; border: 2px solid #fff !important; }
+.etape-icon.actuel  { background-color: #555 !important; }
+.etape-icon.attente { background-color: #222 !important; }
+.etape-icon.erreur  { background-color: #000 !important; border: 2px solid #f00 !important; }
 
 /* Bouton thème */
 #btn-theme {
-  background-color: #0f3460;
-  color: #c39bd3;
-  border: 2px solid #4a4a6a;
+  background-color: #222;
+  color: #fff;
+  border: 2px solid #666;
 }
 
 #btn-theme:hover {
-  background-color: #6a3d9a;
-  color: #fff;
+  background-color: #444;
 }
 
 /* Image décorative */
 .tahia {
-  opacity: 0.6 !important;
+  opacity: 0.4 !important;
+  filter: grayscale(100%) !important;
 }
+
