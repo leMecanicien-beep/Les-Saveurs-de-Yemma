@@ -146,17 +146,44 @@ tr:hover {
   background-color: #111 !important;
 }
 
-/* Filtre boutons */
-.filtre-btn {
+/* Filtre boutons (page plats) */
+.filtre-btn,
+.filtre-cat {
   background-color: #222 !important;
   color: #ddd !important;
   border-color: #555 !important;
 }
 
 .filtre-btn.actif,
-.filtre-btn:hover {
+.filtre-btn:hover,
+.filtre-cat.actif,
+.filtre-cat:hover {
   background-color: #444 !important;
   color: #fff !important;
+}
+
+.filtres-avances {
+  background: #111 !important;
+  border-color: #444 !important;
+}
+
+.select-tri {
+  background: #222 !important;
+  color: #f0f0f0 !important;
+  border-color: #555 !important;
+}
+
+.prix {
+  color: #ccc !important;
+}
+
+.badge-jour {
+  background-color: #333 !important;
+  color: #ddd !important;
+}
+
+.allergenes {
+  color: #888 !important;
 }
 
 /* Étapes de suivi */
@@ -181,4 +208,3 @@ tr:hover {
   opacity: 0.4 !important;
   filter: grayscale(100%) !important;
 }
-
