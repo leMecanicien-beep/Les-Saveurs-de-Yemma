@@ -105,10 +105,7 @@ $remises_disponibles = [0, 5, 10, 15, 20];
     </div>
 
     <div class="info-card">
-        <h3>Actions administrateur <span class="mention-phase">(effectives en Phase 3)</span></h3>
-        <p class="info-phase">
-            Les actions ci-dessous sont affichées mais non fonctionnelles jusqu'à la Phase 3.
-        </p>
+        <h3>Actions administrateur</h3>
 
         <div class="admin-actions-grid">
 
@@ -116,33 +113,42 @@ $remises_disponibles = [0, 5, 10, 15, 20];
                 <label class="action-label">
                     <?php echo ($cible['bloque'] ?? false) ? 'Débloquer le compte' : 'Bloquer le compte'; ?>
                 </label>
-                <button disabled class="btn-admin btn-bloquer">
+                <button id="btn-bloquer-profil" class="btn-admin btn-bloquer"
+                    data-user-id="<?php echo $cible['id']; ?>"
+                    data-bloque="<?php echo ($cible['bloque'] ?? false) ? '1' : '0'; ?>"
+                    data-nom="<?php echo htmlspecialchars($cible['prenom'] . ' ' . $cible['nom']); ?>">
                     <?php echo ($cible['bloque'] ?? false) ? 'Débloquer' : 'Bloquer'; ?>
                 </button>
             </div>
 
             <div>
                 <label class="action-label">Modifier le statut</label>
-                <select disabled class="select-admin">
+                <select id="select-statut-profil" class="select-admin">
                     <?php foreach ($statuts_disponibles as $s): ?>
-                    <option <?php echo ($cible['statut'] ?? 'Standard') === $s ? 'selected' : ''; ?>>
+                    <option value="<?php echo $s; ?>" <?php echo ($cible['statut'] ?? 'Standard') === $s ? 'selected' : ''; ?>>
                         <?php echo $s; ?>
                     </option>
                     <?php endforeach; ?>
                 </select>
-                <button disabled class="btn-admin btn-statut btn-admin-ml">Appliquer</button>
+                <button id="btn-statut-profil" class="btn-admin btn-admin-ml"
+                    data-user-id="<?php echo $cible['id']; ?>">
+                    Appliquer
+                </button>
             </div>
 
             <div>
                 <label class="action-label">Remise accordée</label>
-                <select disabled class="select-admin">
+                <select id="select-remise-profil" class="select-admin">
                     <?php foreach ($remises_disponibles as $r): ?>
                     <option value="<?php echo $r; ?>" <?php echo ($cible['taux_remise'] ?? 0) === $r ? 'selected' : ''; ?>>
                         <?php echo $r; ?>%
                     </option>
                     <?php endforeach; ?>
                 </select>
-                <button disabled class="btn-admin btn-remise btn-admin-ml">Appliquer</button>
+                <button id="btn-remise-profil" class="btn-admin btn-admin-ml"
+                    data-user-id="<?php echo $cible['id']; ?>">
+                    Appliquer
+                </button>
             </div>
 
         </div>
@@ -179,6 +185,98 @@ $remises_disponibles = [0, 5, 10, 15, 20];
     <?php endif; ?>
 </main>
 <script src="../assets/js/theme.js"></script>
+<script>
+(function () {
+    function toast(msg, ok) {
+        var t = document.getElementById('pa-toast');
+        if (!t) {
+            t = document.createElement('div');
+            t.id = 'pa-toast';
+            t.style.cssText = 'position:fixed;bottom:30px;right:30px;padding:14px 22px;border-radius:8px;font-size:15px;z-index:9999;color:#fff;display:none;';
+            document.body.appendChild(t);
+        }
+        t.textContent = msg;
+        t.style.backgroundColor = ok ? '#27ae60' : '#c0392b';
+        t.style.display = 'block';
+        setTimeout(function () { t.style.display = 'none'; }, 3500);
+    }
+
+    // Bloquer / Débloquer
+    var btnBloquer = document.getElementById('btn-bloquer-profil');
+    if (btnBloquer) {
+        btnBloquer.addEventListener('click', function () {
+            var userId = parseInt(btnBloquer.dataset.userId);
+            var bloque = btnBloquer.dataset.bloque === '1';
+            var nom    = btnBloquer.dataset.nom || 'cet utilisateur';
+            if (!confirm('Voulez-vous ' + (bloque ? 'débloquer' : 'bloquer') + ' ' + nom + ' ?')) return;
+            btnBloquer.disabled = true;
+            fetch('../api/bloquer_user.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id: userId })
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (res) {
+                if (res.success) {
+                    btnBloquer.dataset.bloque = res.bloque ? '1' : '0';
+                    btnBloquer.textContent    = res.bloque ? 'Débloquer' : 'Bloquer';
+                    btnBloquer.previousElementSibling.textContent = res.bloque ? 'Débloquer le compte' : 'Bloquer le compte';
+                    toast(res.message, true);
+                } else {
+                    toast(res.message, false);
+                }
+                btnBloquer.disabled = false;
+            })
+            .catch(function () { toast('Erreur réseau.', false); btnBloquer.disabled = false; });
+        });
+    }
+
+    // Modifier statut
+    var btnStatut = document.getElementById('btn-statut-profil');
+    if (btnStatut) {
+        btnStatut.addEventListener('click', function () {
+            var userId = parseInt(btnStatut.dataset.userId);
+            var statut = document.getElementById('select-statut-profil').value;
+            fetch('../api/modifier_statut.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id: userId, statut: statut })
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (res) {
+                if (res.success) {
+                    toast('Statut mis à jour : ' + res.statut, true);
+                } else {
+                    toast(res.message, false);
+                }
+            })
+            .catch(function () { toast('Erreur réseau.', false); });
+        });
+    }
+
+    // Modifier remise
+    var btnRemise = document.getElementById('btn-remise-profil');
+    if (btnRemise) {
+        btnRemise.addEventListener('click', function () {
+            var userId = parseInt(btnRemise.dataset.userId);
+            var remise = parseInt(document.getElementById('select-remise-profil').value);
+            fetch('../api/modifier_remise.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id: userId, taux_remise: remise })
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (res) {
+                if (res.success) {
+                    toast('Remise mise à jour : ' + remise + '%', true);
+                } else {
+                    toast(res.message, false);
+                }
+            })
+            .catch(function () { toast('Erreur réseau.', false); });
+        });
+    }
+})();
+</script>
 </body>
 </html>
-
