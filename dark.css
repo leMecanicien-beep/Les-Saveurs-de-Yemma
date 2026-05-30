@@ -130,6 +130,16 @@ tr:hover {
 .msg-erreur    { background-color: #2a0000 !important; color: #ffaaaa !important; border-color: #600 !important; }
 .notif-succes  { background-color: #002a00 !important; color: #aaffaa !important; }
 
+/* Section accueil */
+.presentation {
+  background-color: #1a1a1a !important;
+  color: #f0f0f0 !important;
+}
+
+.texte p {
+  color: #f0f0f0 !important;
+}
+
 /* Section profil */
 .profil,
 .profil2 {
