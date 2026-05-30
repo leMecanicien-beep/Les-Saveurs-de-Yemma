@@ -64,6 +64,13 @@ if ($paiement_valide) {
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
+<div style="position:fixed;top:16px;right:16px;z-index:100;">
+    <button id="btn-theme" title="Changer le thème"
+        style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #b98acb;background:#b98acb;color:#fff;">
+        🌕 Mode sombre
+    </button>
+</div>
+
 <header>
     <div class="cadre">
         <div class="enseigne">
@@ -97,5 +104,6 @@ if ($paiement_valide) {
         <?php endif; ?>
     </div>
 </main>
+<script src="../assets/js/theme.js"></script>
 </body>
 </html>
