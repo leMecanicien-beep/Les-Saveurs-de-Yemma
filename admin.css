@@ -49,9 +49,13 @@
   padding: 5px 10px;
   border: none;
   border-radius: 6px;
-  cursor: not-allowed;
+  cursor: pointer;
   font-size: .82em;
-  opacity: .6;
+}
+
+.user-actions button:disabled {
+  cursor: not-allowed;
+  opacity: .5;
 }
 
 .btn-bloquer { background: #e74c3c; color: white; }
@@ -91,9 +95,13 @@
   padding: 8px 16px;
   border: none;
   border-radius: 6px;
-  cursor: not-allowed;
-  opacity: .6;
+  cursor: pointer;
   font-size: .9em;
+}
+
+.btn-admin:disabled {
+  cursor: not-allowed;
+  opacity: .5;
 }
 
 .lien-retour {
@@ -136,7 +144,12 @@
   padding: 8px;
   border-radius: 6px;
   border: 1px solid #ccc;
-  opacity: .6;
+  cursor: pointer;
+}
+
+.select-admin:disabled {
+  cursor: not-allowed;
+  opacity: .5;
 }
 
 .btn-admin-ml {
@@ -161,3 +174,4 @@
 .table-admin tbody tr {
   border-bottom: 1px solid #eee;
 }
+
