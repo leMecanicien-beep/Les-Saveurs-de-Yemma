@@ -59,9 +59,8 @@ if ($ma_commande) {
                 <li><a href="deconnexion.php">DÉCONNEXION</a></li>
             </ul>
         </nav>
-        <div class="barre" style="text-align:right;">
-            <button id="btn-theme" title="Changer le thème"
-                style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;">
+        <div class="barre">
+            <button id="btn-theme" title="Changer le thème">
                 🌕 Mode sombre
             </button>
         </div>
@@ -73,7 +72,7 @@ if ($ma_commande) {
         <p><?php echo htmlspecialchars($user['prenom'] . ' ' . $user['nom']); ?></p>
     </div>
 
-    <p id="livraison-msg" style="display:none;padding:12px 40px;border-radius:6px;margin:10px 40px;"></p>
+    <p id="livraison-msg"></p>
 
     <?php if ($ma_commande && $client): ?>
     <div class="livraison">
@@ -150,3 +149,4 @@ if ($ma_commande) {
 <script src="../assets/js/livraison.js"></script>
 </body>
 </html>
+
