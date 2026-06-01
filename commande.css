@@ -147,3 +147,26 @@ h2 {
 
 /* Actions form */
 .actions-form { display: flex; flex-direction: column; gap: 12px; }
+
+#actions-msg {
+  display: none;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.actions-form-group {
+  margin-bottom: 16px;
+}
+
+.select-statut,
+.select-livreur {
+  margin-top: 6px;
+  padding: 8px;
+  border: 2px solid #b98acb;
+  border-radius: 6px;
+}
+
+.btn-ml {
+  margin-left: 10px;
+}
