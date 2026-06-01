@@ -97,6 +97,9 @@ $total = round($total, 2);
             </ul>
         </nav>
         <div class="barre">
+            <button id="btn-theme" title="Changer le thème">
+                🌕 Mode sombre
+            </button>
             <input type="text" placeholder="Rechercher un plat...">
         </div>
     </div>
@@ -165,6 +168,7 @@ $total = round($total, 2);
         <?php endif; ?>
     </section>
 </main>
-</script>
+<script src="../assets/js/theme.js"></script>
 </body>
 </html>
+
