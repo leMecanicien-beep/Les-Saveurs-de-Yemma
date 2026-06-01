@@ -79,3 +79,10 @@
   color: #e74c3c;
   font-weight: bold;
 }
+
+#livraison-msg {
+  display: none;
+  padding: 12px 40px;
+  border-radius: 6px;
+  margin: 10px 40px;
+}
