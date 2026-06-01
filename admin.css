@@ -175,3 +175,66 @@
   border-bottom: 1px solid #eee;
 }
 
+
+
+/* TABLE LOGS            */
+
+
+.logs-wrapper {
+  overflow-x: auto;
+  margin: 0 24px 40px;
+}
+
+.logs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.logs-table thead tr {
+  background: #b98acb;
+  color: #fff;
+  text-align: left;
+}
+
+.logs-table th {
+  padding: 10px;
+}
+
+.logs-table td {
+  padding: 8px 10px;
+}
+
+.logs-table tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+.logs-table .td-date {
+  white-space: nowrap;
+}
+
+.logs-table .td-ip {
+  font-family: monospace;
+}
+
+.logs-empty {
+  padding: 16px;
+  text-align: center;
+  color: #888;
+}
+
+.badge-log {
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.logs-banner {
+  margin-top: 40px;
+}
+
+.table-admin tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
