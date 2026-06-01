@@ -1,5 +1,6 @@
-/* PAGE SUIVI */
-
+/* ===================== */
+/* PAGE SUIVI            */
+/* ===================== */
 
 .suivi-card {
   background: white;
@@ -115,3 +116,121 @@
   margin-top: 16px;
 }
 
+
+/* ===================== */
+/* MODIFICATION COMMANDE */
+/* ===================== */
+
+.modif-container {
+  margin-top: 20px;
+  border-top: 2px solid #b98acb;
+  padding-top: 16px;
+}
+
+#modif-msg {
+  display: none;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+#btn-toggle-modif {
+  margin-bottom: 10px;
+}
+
+#section-modif {
+  display: none;
+}
+
+.section-modif {
+  margin: 20px 0;
+  padding: 16px;
+  background: #f9f9f9;
+  border: 2px solid #b98acb;
+  border-radius: 8px;
+}
+
+.section-modif h4 {
+  margin-bottom: 12px;
+  color: #b98acb;
+}
+
+.hint-modif {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.ligne-plat-modif {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 10px;
+}
+
+.ligne-plat-modif .nom-plat {
+  flex: 1;
+}
+
+.prix-unitaire {
+  color: #888;
+}
+
+.section-plats-autres {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.qte-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-moins,
+.btn-plus {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #b98acb;
+  background: white;
+  color: #b98acb;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.btn-moins:hover,
+.btn-plus:hover {
+  background: #b98acb;
+  color: white;
+}
+
+.qte-input {
+  width: 50px;
+  text-align: center;
+  padding: 4px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+.total-modif-ligne {
+  font-weight: bold;
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+.btn-submit-modif {
+  margin-top: 14px;
+}
+
+#zone-paiement-suppl {
+  display: none;
+  margin-top: 12px;
+  padding: 12px;
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  border-radius: 6px;
+}
