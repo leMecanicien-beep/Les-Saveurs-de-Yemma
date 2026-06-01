@@ -43,9 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="body-centered">
 
-<div style="position:fixed;top:16px;right:16px;z-index:100;">
-    <button id="btn-theme" title="Changer le thème"
-        style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #b98acb;background:#b98acb;color:#fff;">
+<div class="btn-theme-fixed">
+    <button id="btn-theme" class="btn-theme-purple" title="Changer le thème">
         🌕 Mode sombre
     </button>
 </div>
@@ -87,3 +86,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script src="../assets/js/validation.js"></script>
 </body>
 </html>
+
