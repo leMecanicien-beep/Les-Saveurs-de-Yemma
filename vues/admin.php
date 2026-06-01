@@ -43,9 +43,8 @@ usort($users, function($a, $b) use ($roles_ordre) {
                 <li><a href="deconnexion.php">DÉCONNEXION</a></li>
             </ul>
         </nav>
-        <div class="barre" style="text-align:right;">
-            <button id="btn-theme" title="Changer le thème"
-                style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;">
+        <div class="barre">
+            <button id="btn-theme" title="Changer le thème">
                 🌕 Mode sombre
             </button>
         </div>
@@ -105,7 +104,7 @@ usort($users, function($a, $b) use ($roles_ordre) {
         <?php endforeach; ?>
     </div>
     <!-- Section logs d'incidents -->
-    <div class="page-banner" id="logs" style="margin-top:40px;">
+    <div class="page-banner logs-banner" id="logs">
         <h2>Logs d'incidents</h2>
         <p>50 événements les plus récents</p>
     </div>
@@ -120,31 +119,31 @@ usort($users, function($a, $b) use ($roles_ordre) {
         'deblocage_compte'         => ['label' => 'Déblocage',             'couleur' => '#16a085'],
     ];
     ?>
-    <div style="overflow-x:auto;margin:0 24px 40px;">
-        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+    <div class="logs-wrapper">
+        <table class="logs-table">
             <thead>
-                <tr style="background:#b98acb;color:#fff;text-align:left;">
-                    <th style="padding:10px;">Date</th>
-                    <th style="padding:10px;">Type</th>
-                    <th style="padding:10px;">Message</th>
-                    <th style="padding:10px;">IP</th>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Message</th>
+                    <th>IP</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if (empty($logs)): ?>
-                <tr><td colspan="4" style="padding:16px;text-align:center;color:#888;">Aucun log pour l'instant.</td></tr>
+                <tr><td colspan="4" class="logs-empty">Aucun log pour l'instant.</td></tr>
                 <?php else: ?>
                 <?php foreach ($logs as $log): ?>
                 <?php $info = $labels_logs[$log['type']] ?? ['label' => $log['type'], 'couleur' => '#888']; ?>
-                <tr style="border-bottom:1px solid #eee;">
-                    <td style="padding:8px 10px;white-space:nowrap;"><?php echo htmlspecialchars($log['date']); ?></td>
-                    <td style="padding:8px 10px;">
-                        <span style="background:<?php echo $info['couleur']; ?>;color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;">
+                <tr>
+                    <td class="td-date"><?php echo htmlspecialchars($log['date']); ?></td>
+                    <td>
+                        <span class="badge-log" style="background:<?php echo $info['couleur']; ?>">
                             <?php echo htmlspecialchars($info['label']); ?>
                         </span>
                     </td>
-                    <td style="padding:8px 10px;"><?php echo htmlspecialchars($log['message']); ?></td>
-                    <td style="padding:8px 10px;font-family:monospace;"><?php echo htmlspecialchars($log['ip']); ?></td>
+                    <td><?php echo htmlspecialchars($log['message']); ?></td>
+                    <td class="td-ip"><?php echo htmlspecialchars($log['ip']); ?></td>
                 </tr>
                 <?php endforeach; ?>
                 <?php endif; ?>
@@ -156,4 +155,3 @@ usort($users, function($a, $b) use ($roles_ordre) {
 <script src="../assets/js/admin.js"></script>
 </body>
 </html>
-
