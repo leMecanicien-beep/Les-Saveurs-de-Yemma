@@ -70,9 +70,8 @@ $classe_statut = [
                 <li><a href="deconnexion.php">DÉCONNEXION</a></li>
             </ul>
         </nav>
-        <div class="barre" style="text-align:right;">
-            <button id="btn-theme" title="Changer le thème"
-                style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;">
+        <div class="barre">
+            <button id="btn-theme" title="Changer le thème">
                 🌕 Mode sombre
             </button>
         </div>
@@ -166,20 +165,20 @@ $classe_statut = [
     <div class="detail-bloc">
         <h3>Actions restaurateur</h3>
 
-        <p id="actions-msg" style="display:none;padding:10px;border-radius:6px;margin-bottom:12px;"></p>
+        <p id="actions-msg"></p>
 
         <div class="actions-form">
             <!-- Changement de statut -->
-            <div style="margin-bottom:16px;">
+            <div class="actions-form-group">
                 <label><strong>Changer le statut :</strong></label><br>
-                <select id="select-statut" style="margin-top:6px;padding:8px;border:2px solid #b98acb;border-radius:6px;">
+                <select id="select-statut" class="select-statut">
                     <?php foreach ($label_statut as $val => $lib): ?>
                     <option value="<?php echo $val; ?>" <?php echo $commande['statut'] === $val ? 'selected' : ''; ?>>
                         <?php echo $lib; ?>
                     </option>
                     <?php endforeach; ?>
                 </select>
-                <button id="btn-valider-statut" class="btn" style="margin-left:10px;">
+                <button id="btn-valider-statut" class="btn btn-ml">
                     Valider le statut
                 </button>
             </div>
@@ -188,7 +187,7 @@ $classe_statut = [
             <!-- Attribution livreur -->
             <div class="livreur-section">
                 <label><strong>Attribuer un livreur :</strong></label><br>
-                <select id="select-livreur" style="margin-top:6px;padding:8px;border:2px solid #b98acb;border-radius:6px;">
+                <select id="select-livreur" class="select-livreur">
                     <option value="">-- Choisir un livreur --</option>
                     <?php foreach ($livreurs as $livreur): ?>
                     <option value="<?php echo $livreur['id']; ?>"
@@ -198,7 +197,7 @@ $classe_statut = [
                     </option>
                     <?php endforeach; ?>
                 </select>
-                <button id="btn-attribuer-livreur" class="btn" style="margin-left:10px;">
+                <button id="btn-attribuer-livreur" class="btn btn-ml">
                     Attribuer
                 </button>
             </div>
