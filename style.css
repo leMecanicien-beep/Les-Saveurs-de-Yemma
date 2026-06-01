@@ -480,3 +480,36 @@ input[type="button"]:not([disabled]) {
 .td-center {
   text-align: center;
 }
+
+
+/* ===================== */
+/* BOUTON THÈME VARIANTES */
+/* ===================== */
+
+.btn-theme-fixed {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+}
+
+.btn-theme-purple {
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  border: 2px solid #b98acb;
+  background: #b98acb;
+  color: #fff;
+}
+
+
+/* ===================== */
+/* MESSAGES GLOBAUX      */
+/* ===================== */
+
+.msg-bloque {
+  margin: 20px 40px;
+  padding: 12px;
+  border-radius: 6px;
+}
