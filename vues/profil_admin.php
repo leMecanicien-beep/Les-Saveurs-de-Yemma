@@ -60,9 +60,8 @@ $remises_disponibles = [0, 5, 10, 15, 20];
                 <li><a href="deconnexion.php">DÉCONNEXION</a></li>
             </ul>
         </nav>
-        <div class="barre" style="text-align:right;">
-            <button id="btn-theme" title="Changer le thème"
-                style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;">
+        <div class="barre">
+            <button id="btn-theme" title="Changer le thème">
                 🌕 Mode sombre
             </button>
         </div>
