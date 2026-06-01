@@ -70,19 +70,6 @@ foreach ($plats as $p) { $plats_index[$p['id']] = $p; }
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/style.css">
     <link rel="stylesheet" href="../assets/suivi.css">
-    <style>
-        .section-modif { margin: 20px 0; padding: 16px; background: #f9f9f9; border: 2px solid #b98acb; border-radius: 8px; }
-        .section-modif h4 { margin-bottom: 12px; color: #b98acb; }
-        .ligne-plat-modif { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 10px; }
-        .ligne-plat-modif .nom-plat { flex: 1; }
-        .qte-controls { display: flex; align-items: center; gap: 6px; }
-        .btn-moins, .btn-plus { width: 28px; height: 28px; border: 2px solid #b98acb; background: white;
-                                 color: #b98acb; border-radius: 50%; cursor: pointer; font-size: 16px; line-height: 1; }
-        .btn-moins:hover, .btn-plus:hover { background: #b98acb; color: white; }
-        .qte-input { width: 50px; text-align: center; padding: 4px; border: 2px solid #ddd; border-radius: 4px; }
-        .total-modif-ligne { font-weight: bold; margin-top: 12px; font-size: 16px; }
-        #zone-paiement-suppl { display: none; margin-top: 12px; padding: 12px; background: #fff3cd; border: 2px solid #ffc107; border-radius: 6px; }
-    </style>
 </head>
 <body>
 <header>
@@ -101,8 +88,7 @@ foreach ($plats as $p) { $plats_index[$p['id']] = $p; }
             </ul>
         </nav>
         <div class="barre">
-            <button id="btn-theme" title="Changer le thème"
-                style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;margin-right:8px;vertical-align:middle;">
+            <button id="btn-theme" title="Changer le thème">
                 🌕 Mode sombre
             </button>
         </div>
@@ -201,17 +187,17 @@ foreach ($plats as $p) { $plats_index[$p['id']] = $p; }
 
         <!-- ═══ Modification de commande (uniquement si en_attente) ═══ -->
         <?php if ($statut_actuel === 'en_attente'): ?>
-        <div style="margin-top:20px;border-top:2px solid #b98acb;padding-top:16px;">
-            <p id="modif-msg" style="display:none;padding:10px;border-radius:6px;margin-bottom:10px;"></p>
+        <div class="modif-container">
+            <p id="modif-msg"></p>
 
-            <button id="btn-toggle-modif" class="btn" style="margin-bottom:10px;">
+            <button id="btn-toggle-modif" class="btn">
                 Modifier la commande
             </button>
 
-            <div id="section-modif" style="display:none;">
+            <div id="section-modif">
                 <div class="section-modif">
                     <h4>Modifier les quantités</h4>
-                    <p style="font-size:13px;color:#666;margin-bottom:12px;">
+                    <p class="hint-modif">
                         Vous pouvez modifier votre commande tant qu'elle n'est pas encore en préparation.
                         Mettez une quantité à 0 pour retirer un plat.
                     </p>
@@ -229,7 +215,7 @@ foreach ($plats as $p) { $plats_index[$p['id']] = $p; }
                         <div class="ligne-plat-modif">
                             <span class="nom-plat">
                                 <?php echo htmlspecialchars($plat['nom']); ?>
-                                <small style="color:#888;">(<?php echo number_format($plat['prix'], 2); ?>€/u)</small>
+                                <small class="prix-unitaire">(<?php echo number_format($plat['prix'], 2); ?>€/u)</small>
                             </span>
                             <div class="qte-controls">
                                 <button type="button" class="btn-moins">−</button>
@@ -249,12 +235,12 @@ foreach ($plats as $p) { $plats_index[$p['id']] = $p; }
                         $plats_autres   = array_filter($plats, fn($p) => !in_array($p['id'], $plats_deja_ids) && $p['disponible']);
                         if (!empty($plats_autres)):
                         ?>
-                        <h4 style="margin-top:16px;margin-bottom:8px;font-size:14px;">Ajouter d'autres plats :</h4>
+                        <h4 class="section-plats-autres">Ajouter d'autres plats :</h4>
                         <?php foreach ($plats_autres as $p): ?>
                         <div class="ligne-plat-modif">
                             <span class="nom-plat">
                                 <?php echo htmlspecialchars($p['nom']); ?>
-                                <small style="color:#888;">(<?php echo number_format($p['prix'], 2); ?>€/u)</small>
+                                <small class="prix-unitaire">(<?php echo number_format($p['prix'], 2); ?>€/u)</small>
                             </span>
                             <div class="qte-controls">
                                 <button type="button" class="btn-moins">−</button>
@@ -272,7 +258,7 @@ foreach ($plats as $p) { $plats_index[$p['id']] = $p; }
                             Nouveau total : <span id="total-modif">0.00 €</span>
                         </div>
 
-                        <button type="submit" class="btn" style="margin-top:14px;">Valider les modifications</button>
+                        <button type="submit" class="btn btn-submit-modif">Valider les modifications</button>
                     </form>
 
                     <!-- Zone paiement supplémentaire -->
