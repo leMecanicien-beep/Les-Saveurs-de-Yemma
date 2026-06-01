@@ -49,8 +49,7 @@ session_start();
             </ul>
         </nav>
         <div class="barre">
-            <button id="btn-theme" title="Changer le thème"
-                style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;margin-right:8px;vertical-align:middle;">
+            <button id="btn-theme" title="Changer le thème">
                 🌕 Mode sombre
             </button>
             <input type="text" placeholder="Rechercher un plat...">
@@ -87,4 +86,3 @@ session_start();
 <script src="../assets/js/theme.js"></script>
 </body>
 </html>
-
