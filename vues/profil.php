@@ -68,8 +68,7 @@ $label_statut = [
             </ul>
         </nav>
         <div class="barre">
-            <button id="btn-theme" title="Changer le thème"
-                style="cursor:pointer;border-radius:20px;padding:6px 14px;font-size:13px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;margin-right:8px;vertical-align:middle;">
+            <button id="btn-theme" title="Changer le thème">
                 🌕 Mode sombre
             </button>
             <input type="text" placeholder="Rechercher un plat...">
@@ -82,7 +81,7 @@ $label_statut = [
         <p class="notif-succes">Merci pour votre avis !</p>
     <?php endif; ?>
 
-    <p id="profil-msg" style="display:none;margin:10px 40px;padding:10px;border-radius:6px;"></p>
+    <p id="profil-msg"></p>
 
     <section class="profil">
         <h2>Profil personnel</h2>
@@ -103,37 +102,37 @@ $label_statut = [
                 </div>
 
                 <!-- Formulaire d'édition (masqué par défaut) -->
-                <form id="form-edit-profil" style="display:none;margin-top:12px;" novalidate>
-                    <div style="margin-bottom:8px;">
-                        <label style="display:block;font-weight:bold;margin-bottom:3px;">Nom</label>
-                        <input type="text" name="nom" value="<?php echo htmlspecialchars($user['nom']); ?>" required maxlength="50" style="width:100%;padding:8px;">
+                <form id="form-edit-profil" novalidate>
+                    <div class="form-field">
+                        <label>Nom</label>
+                        <input type="text" name="nom" value="<?php echo htmlspecialchars($user['nom']); ?>" required maxlength="50">
                     </div>
-                    <div style="margin-bottom:8px;">
-                        <label style="display:block;font-weight:bold;margin-bottom:3px;">Prénom</label>
-                        <input type="text" name="prenom" value="<?php echo htmlspecialchars($user['prenom']); ?>" required maxlength="50" style="width:100%;padding:8px;">
+                    <div class="form-field">
+                        <label>Prénom</label>
+                        <input type="text" name="prenom" value="<?php echo htmlspecialchars($user['prenom']); ?>" required maxlength="50">
                     </div>
-                    <div style="margin-bottom:8px;">
-                        <label style="display:block;font-weight:bold;margin-bottom:3px;">Téléphone</label>
-                        <input type="tel" name="telephone" value="<?php echo htmlspecialchars($user['telephone']); ?>" maxlength="20" style="width:100%;padding:8px;">
+                    <div class="form-field">
+                        <label>Téléphone</label>
+                        <input type="tel" name="telephone" value="<?php echo htmlspecialchars($user['telephone']); ?>" maxlength="20">
                     </div>
-                    <div style="margin-bottom:8px;">
-                        <label style="display:block;font-weight:bold;margin-bottom:3px;">Adresse de livraison</label>
-                        <input type="text" name="adresse" value="<?php echo htmlspecialchars($user['adresse'] ?? ''); ?>" maxlength="200" style="width:100%;padding:8px;">
+                    <div class="form-field">
+                        <label>Adresse de livraison</label>
+                        <input type="text" name="adresse" value="<?php echo htmlspecialchars($user['adresse'] ?? ''); ?>" maxlength="200">
                     </div>
-                    <div style="margin-bottom:12px;">
-                        <label style="display:block;font-weight:bold;margin-bottom:3px;">Code interphone</label>
-                        <input type="text" name="code_interphone" value="<?php echo htmlspecialchars($user['code_interphone'] ?? ''); ?>" maxlength="10" style="width:100%;padding:8px;">
+                    <div class="form-field">
+                        <label>Code interphone</label>
+                        <input type="text" name="code_interphone" value="<?php echo htmlspecialchars($user['code_interphone'] ?? ''); ?>" maxlength="10">
                     </div>
-                    <div style="display:flex;gap:10px;">
+                    <div class="form-actions">
                         <button type="submit" class="btn">Enregistrer</button>
-                        <button type="button" id="btn-annuler-profil" class="btn" style="background:#888;">Annuler</button>
+                        <button type="button" id="btn-annuler-profil" class="btn">Annuler</button>
                     </div>
                 </form>
 
-                <div class="info" style="margin-top:12px;">
-                    <button id="btn-modifier-profil" class="btn" style="cursor:pointer;background:none;border:none;color:inherit;padding:0;font-size:inherit;">
-                        <img src="../assets/images/crayon2.png" alt="" class="crayon" style="height:16px;vertical-align:middle;margin-right:4px;">
-                        <span style="text-decoration:underline;">Modifier</span>
+                <div class="info">
+                    <button id="btn-modifier-profil" class="btn">
+                        <img src="../assets/images/crayon2.png" alt="" class="crayon">
+                        <span class="lien-modifier">Modifier</span>
                     </button>
                 </div>
             </div>
