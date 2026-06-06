@@ -1,13 +1,5 @@
 <?php
-/**
- * API : Récupération des plats avec filtres asynchrones
- * Méthode : GET
- * Paramètres :
- *   categorie   = Tous | Entrée | Traditionnel | Grillade | Dessert | Boisson
- *   allergenes  = gluten,oeuf,... (exclure ces allergènes)
- *   recherche   = texte libre
- * Retourne : JSON [ {id, nom, description, prix, categorie, allergenes} ]
- */
+
 header('Content-Type: application/json; charset=utf-8');
 
 $plats = json_decode(file_get_contents(__DIR__ . '/../../data/plats.json'), true);
