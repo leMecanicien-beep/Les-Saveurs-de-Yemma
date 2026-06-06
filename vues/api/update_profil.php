@@ -1,9 +1,5 @@
 <?php
-/**
- * API : Mise à jour du profil utilisateur (requête asynchrone)
- * Méthode : POST
- * Retourne : JSON { success, message, user? }
- */
+
 session_start();
 require_once __DIR__ . '/../../lib/users.php';
 
