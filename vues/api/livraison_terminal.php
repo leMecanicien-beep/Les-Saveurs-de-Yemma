@@ -1,10 +1,5 @@
 <?php
-/**
- * API : Confirmer une livraison effectuée (livreur)
- * Méthode : POST (JSON body)
- * Body : { commande_id, action: "livree"|"abandonnee" }
- * Retourne : JSON { success, message }
- */
+
 session_start();
 require_once __DIR__ . '/../../lib/users.php';
 
