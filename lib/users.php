@@ -40,7 +40,7 @@ function connecter_user($email, $mot_de_passe) {
         if ($user['email'] !== $email) continue;
 
         $hash = $user['mot_de_passe'];
-        // Migration : si l'ancien MDP est en clair, on vérifie en clair puis on hash
+       
         if (str_starts_with($hash, '$2y$')) {
             $ok = password_verify($mot_de_passe, $hash);
         } else {
