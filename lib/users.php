@@ -1,9 +1,6 @@
 <?php
 
-/**
- * Vérifie si la session courante doit être révoquée (utilisateur bloqué).
- * À appeler après session_start() sur chaque page protégée.
- */
+
 function verifier_session_revoquee() {
     if (!isset($_SESSION['user'])) return;
     $revoked_file = __DIR__ . '/../data/sessions_revoquees.json';
