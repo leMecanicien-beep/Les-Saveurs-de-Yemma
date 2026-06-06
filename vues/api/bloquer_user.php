@@ -1,13 +1,5 @@
 <?php
-/**
- * API : Bloquer / Débloquer un utilisateur (admin)
- * Méthode : POST (JSON body)
- * Body : { user_id }
- * Retourne : JSON { success, message, bloque }
- *
- * Si l'utilisateur est bloqué, sa session est invalidée côté serveur
- * en ajoutant son id dans un fichier de sessions révoquées.
- */
+
 session_start();
 require_once __DIR__ . '/../../lib/users.php';
 require_once __DIR__ . '/../../lib/logs.php';
