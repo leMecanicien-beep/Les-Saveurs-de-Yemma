@@ -1,10 +1,5 @@
 <?php
-/**
- * API : Changement de statut d'une commande (restaurateur)
- * Méthode : POST (JSON body)
- * Body : { commande_id, statut }
- * Retourne : JSON { success, message, statut? }
- */
+
 session_start();
 require_once __DIR__ . '/../../lib/users.php';
 
